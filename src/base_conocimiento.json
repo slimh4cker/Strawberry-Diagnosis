@@ -1,0 +1,469 @@
+{
+  "hechos": [
+    {
+      "id": "R1",
+      "nombre": "Condiciones favorables para hongos en fresas",
+      "condiciones": [
+        {"hecho": "condicion_ambiental", "valor": "falta_ventilacion"},
+        {"hecho": "condicion_ambiental", "valor": "falta_luz"},
+        {"hecho": "condicion_ambiental", "valor": "alta_humedad"}
+      ],
+      "conclusion": {
+        "diagnostico": "Condiciones favorables para hongos en fresas"
+      }
+    },
+    {
+      "id": "R2",
+      "nombre": "Botrytis cinerea (Moho gris)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "danada"},
+        {"hecho": "sintoma_hoja", "valor": "cubierta_gris"},
+        {"hecho": "sintoma_petalo_pedunculo", "valor": "color_cafe"},
+        {"hecho": "sintoma_fruto", "valor": "manchas_cafe"},
+        {"hecho": "sintoma_fruto", "valor": "zonas_acuosas"}
+      ],
+      "conclusion": {
+        "diagnostico": "Botrytis cinerea (Moho gris)"
+      }
+    },
+    {
+      "id": "R3",
+      "nombre": "Phytophthora cactorum (Pudrición de la corona)",
+      "condiciones": [
+        {"hecho": "sintoma_planta", "valor": "chiquita"},
+        {"hecho": "sintoma_hoja", "valor": "marchita"},
+        {"hecho": "sintoma_corona", "valor": "manchas_oscuras"},
+        {"hecho": "sintoma_raiz", "valor": "podrida_negra"},
+        {"hecho": "sintoma_fruto", "valor": "manchas_cafe"},
+        {"hecho": "sintoma_fruto", "valor": "morado_oscuro"},
+        {"hecho": "sintoma_general", "valor": "olor_feo"},
+        {"hecho": "sintoma_fruto", "valor": "moho_blanco_humedo"}
+      ],
+      "conclusion": {
+        "diagnostico": "Phytophthora cactorum (Pudrición de la corona)"
+      }
+    },
+    {
+      "id": "R4",
+      "nombre": "Phytophthora fragariae var fragariae (Pudrición de la raíz roja)",
+      "condiciones": [
+        {"hecho": "sintoma_planta", "valor": "marchitez_general"},
+        {"hecho": "sintoma_raiz_joven", "valor": "podrida"},
+        {"hecho": "sintoma_raiz_principal", "valor": "estela_central_roja"},
+        {"hecho": "sintoma_raiz", "valor": "corteza_desprendible"},
+        {"hecho": "sintoma_hoja_vieja", "valor": "color_amarillo_rojizo"},
+        {"hecho": "sintoma_fruto", "valor": "escasos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Phytophthora fragariae var fragariae (Pudrición de la raíz roja)"
+      }
+    },
+    {
+      "id": "R5",
+      "nombre": "Rhizoctonia solani (Pudrición de la corona y raíz)",
+      "condiciones": [
+        {"hecho": "sintoma_estolon", "valor": "muerto"},
+        {"hecho": "sintoma_raiz", "valor": "podrida"},
+        {"hecho": "sintoma_peciolo", "valor": "lesiones_oscuras"},
+        {"hecho": "sintoma_base_hoja", "valor": "lesiones"},
+        {"hecho": "sintoma_corona", "valor": "podrida"},
+        {"hecho": "sintoma_fruto", "valor": "podrido"},
+        {"hecho": "sintoma_hoja", "valor": "marchita"}
+      ],
+      "conclusion": {
+        "diagnostico": "Rhizoctonia solani (Pudrición de la corona y raíz)"
+      }
+    },
+    {
+      "id": "R6",
+      "nombre": "Fusarium sp (Marchitez por Fusarium)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja_vieja", "valor": "marchita"},
+        {"hecho": "sintoma_raiz", "valor": "blanca"},
+        {"hecho": "sintoma_raiz", "valor": "podrida"},
+        {"hecho": "sintoma_corona", "valor": "descolorida"},
+        {"hecho": "sintoma_fruto", "valor": "agarre_flojo"},
+        {"hecho": "sintoma_planta", "valor": "muerte"}
+      ],
+      "conclusion": {
+        "diagnostico": "Fusarium sp (Marchitez por Fusarium)"
+      }
+    },
+    {
+      "id": "R7",
+      "nombre": "Colletotricum (Antracnosis)",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "lesiones"},
+        {"hecho": "sintoma_fruto", "valor": "manchas_circulares_marron"},
+        {"hecho": "sintoma_fruto", "valor": "centros_necroticos_rosada"},
+        {"hecho": "sintoma_fruto", "valor": "pudricion"},
+        {"hecho": "sintoma_tallo", "valor": "marchito"},
+        {"hecho": "sintoma_peciolo", "valor": "marchito"},
+        {"hecho": "sintoma_hoja", "valor": "manchas_negras"}
+      ],
+      "conclusion": {
+        "diagnostico": "Colletotricum (Antracnosis)"
+      }
+    },
+    {
+      "id": "R8",
+      "nombre": "Mycosphaerella fragariae (Mancha foliar)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "manchas_purpura"},
+        {"hecho": "sintoma_hoja", "valor": "centros_grisaceos_blanquecinos"},
+        {"hecho": "sintoma_hoja", "valor": "bordes_oscuros_definidos"},
+        {"hecho": "sintoma_planta", "valor": "debilitada"}
+      ],
+      "conclusion": {
+        "diagnostico": "Mycosphaerella fragariae (Mancha foliar)"
+      }
+    },
+    {
+      "id": "R9",
+      "nombre": "Podosphaera aphanis (Oídio)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "enrollamiento_limites"},
+        {"hecho": "sintoma_hoja", "valor": "manchas_blancas_micelio"},
+        {"hecho": "sintoma_hoja", "valor": "puntos_negros"},
+        {"hecho": "sintoma_fruto", "valor": "opacos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Podosphaera aphanis (Oídio)"
+      }
+    },
+    {
+      "id": "R10",
+      "nombre": "Alternaria spp (Mancha foliar por Alternaria)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "lesiones_negras"},
+        {"hecho": "sintoma_fruto", "valor": "lesiones_negras"},
+        {"hecho": "sintoma_hoja", "valor": "halo_amarillo"}
+      ],
+      "conclusion": {
+        "diagnostico": "Alternaria spp (Mancha foliar por Alternaria)"
+      }
+    },
+    {
+      "id": "R11",
+      "nombre": "Rhizopus stolonifer (Pudrición blanda)",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "lesiones_blandas"},
+        {"hecho": "sintoma_fruto", "valor": "goteo_liquido_rojo"},
+        {"hecho": "sintoma_fruto", "valor": "cubierta_blanca_negra"}
+      ],
+      "conclusion": {
+        "diagnostico": "Rhizopus stolonifer (Pudrición blanda)"
+      }
+    },
+    {
+      "id": "R12",
+      "nombre": "Mucor ssp (Pudrición por Mucor)",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "masas_largas_micelio"},
+        {"hecho": "sintoma_fruto", "valor": "perdida_agua"}
+      ],
+      "conclusion": {
+        "diagnostico": "Mucor ssp (Pudrición por Mucor)"
+      }
+    },
+    {
+      "id": "R13",
+      "nombre": "Aspergillus niger (Moho negro)",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "manchas_blandas"},
+        {"hecho": "sintoma_fruto", "valor": "moho_negro"},
+        {"hecho": "sintoma_fruto", "valor": "descomposicion_rapida_tejido"},
+        {"hecho": "sintoma_fruto", "valor": "olor_fermentacion_moho"},
+        {"hecho": "sintoma_fruto", "valor": "perdida_total_firmeza"}
+      ],
+      "conclusion": {
+        "diagnostico": "Aspergillus niger (Moho negro)"
+      }
+    },
+    {
+      "id": "R14",
+      "nombre": "Pulgones",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "arrugadas"},
+        {"hecho": "sintoma_hoja", "valor": "pegajosas"},
+        {"hecho": "sintoma_planta", "valor": "hormigas_alrededor"},
+        {"hecho": "presencia_insecto", "valor": "pequenos_insectos_tallo"}
+      ],
+      "conclusion": {
+        "diagnostico": "Pulgones"
+      }
+    },
+    {
+      "id": "R15",
+      "nombre": "Araña roja",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "secas"},
+        {"hecho": "sintoma_hoja", "valor": "telaranas_muy_pequenas"},
+        {"hecho": "sintoma_planta", "valor": "debil_seca"}
+      ],
+      "conclusion": {
+        "diagnostico": "Araña roja"
+      }
+    },
+    {
+      "id": "R16",
+      "nombre": "Trips",
+      "condiciones": [
+        {"hecho": "sintoma_fruto_joven", "valor": "rayas_plateadas"},
+        {"hecho": "sintoma_fruto_maduro", "valor": "deformados_piel_fea"}
+      ],
+      "conclusion": {
+        "diagnostico": "Trips"
+      }
+    },
+    {
+      "id": "R17",
+      "nombre": "Mosca blanca",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "amarillentas"},
+        {"hecho": "presencia_insecto", "valor": "moscas_blancas_pequenas_alrededor"},
+        {"hecho": "sintoma_planta", "valor": "crecimiento_lento"}
+      ],
+      "conclusion": {
+        "diagnostico": "Mosca blanca"
+      }
+    },
+    {
+      "id": "R18",
+      "nombre": "Gusanos cortadores",
+      "condiciones": [
+        {"hecho": "sintoma_planta", "valor": "cortadas_ras_suelo"},
+        {"hecho": "sintoma_planta", "valor": "marchita"},
+        {"hecho": "presencia_insecto", "valor": "gusanos_gordos_tierra"}
+      ],
+      "conclusion": {
+        "diagnostico": "Gusanos cortadores"
+      }
+    },
+    {
+      "id": "R19",
+      "nombre": "Caracoles y babosas",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "agujeros_grandes"},
+        {"hecho": "sintoma_fruto", "valor": "mordidas"},
+        {"hecho": "sintoma_general", "valor": "baba_brillante"}
+      ],
+      "conclusion": {
+        "diagnostico": "Caracoles y babosas"
+      }
+    },
+    {
+      "id": "R20",
+      "nombre": "Picudo de la fresa",
+      "condiciones": [
+        {"hecho": "sintoma_boton", "valor": "seco_caido"},
+        {"hecho": "sintoma_boton", "valor": "perforado"},
+        {"hecho": "sintoma_fruto", "valor": "escasos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Picudo de la fresa"
+      }
+    },
+    {
+      "id": "R21",
+      "nombre": "Gusano soldado de la remolacha",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "mordidas_agujeros"},
+        {"hecho": "sintoma_fruto", "valor": "danados"},
+        {"hecho": "presencia_insecto", "valor": "gusanos_verdes_pequenos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Gusano soldado de la remolacha"
+      }
+    },
+    {
+      "id": "R22",
+      "nombre": "Gusano falso medidor",
+      "condiciones": [
+        {"hecho": "sintoma_hoja_nueva", "valor": "mordidas"},
+        {"hecho": "sintoma_hoja", "valor": "agujeros_irregulares"},
+        {"hecho": "presencia_insecto", "valor": "larvas_movimiento_u"}
+      ],
+      "conclusion": {
+        "diagnostico": "Gusano falso medidor"
+      }
+    },
+    {
+      "id": "R23",
+      "nombre": "Gusano del elote de maiz",
+      "condiciones": [
+        {"hecho": "presencia_insecto", "valor": "polilla_color_cafe"},
+        {"hecho": "presencia_insecto", "valor": "gusanos_cabeza_dura_cafe"},
+        {"hecho": "sintoma_hoja", "valor": "mordidas"},
+        {"hecho": "sintoma_fruto", "valor": "mordidos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Gusano del elote de maiz"
+      }
+    },
+    {
+      "id": "R24",
+      "nombre": "Ácaro del ciclamino",
+      "condiciones": [
+        {"hecho": "sintoma_hoja_nueva", "valor": "deformadas_arrugadas"},
+        {"hecho": "sintoma_planta", "valor": "crecimiento_detenido"},
+        {"hecho": "sintoma_hoja", "valor": "amarillentas"},
+        {"hecho": "sintoma_fruto", "valor": "pequenos_deformes"}
+      ],
+      "conclusion": {
+        "diagnostico": "Ácaro del ciclamino"
+      }
+    },
+    {
+      "id": "R25",
+      "nombre": "Tijerilla europea",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "agujeros_profundos"},
+        {"hecho": "presencia_insecto", "valor": "tijerillas_dentro_fruto"}
+      ],
+      "conclusion": {
+        "diagnostico": "Tijerilla europea"
+      }
+    },
+    {
+      "id": "R26",
+      "nombre": "Ciempiés de jardín",
+      "condiciones": [
+        {"hecho": "presencia_insecto", "valor": "ciempes_en_cerca_planta"},
+        {"hecho": "sintoma_raiz", "valor": "dano"},
+        {"hecho": "sintoma_fruto_cerca_suelo", "valor": "mordidas_redondas_pequenas"}
+      ],
+      "conclusion": {
+        "diagnostico": "Ciempiés de jardín"
+      }
+    },
+    {
+      "id": "R27",
+      "nombre": "Palomilla tortrix del jardín",
+      "condiciones": [
+        {"hecho": "presencia_insecto", "valor": "larvas_verdes_amarillas_cabeza_marron_fruta"},
+        {"hecho": "sintoma_hoja", "valor": "enrolladas_torcidas"}
+      ],
+      "conclusion": {
+        "diagnostico": "Palomilla tortrix del jardín"
+      }
+    },
+    {
+      "id": "R28",
+      "nombre": "Chinche lygus",
+      "condiciones": [
+        {"hecho": "sintoma_fruto", "valor": "deformes"},
+        {"hecho": "sintoma_hoja", "valor": "amarillentas"},
+        {"hecho": "presencia_insecto", "valor": "chinches_verde_rojo_naranja"}
+      ],
+      "conclusion": {
+        "diagnostico": "Chinche lygus"
+      }
+    },
+    {
+      "id": "R29",
+      "nombre": "Escarabajos de la raíz",
+      "condiciones": [
+        {"hecho": "sintoma_planta", "valor": "baja_normal"},
+        {"hecho": "sintoma_hoja", "valor": "amarillentas_marchitas"},
+        {"hecho": "sintoma_planta_joven", "valor": "muerte"},
+        {"hecho": "sintoma_fruto", "valor": "pequenos_deformes"}
+      ],
+      "conclusion": {
+        "diagnostico": "Escarabajos de la raíz"
+      }
+    },
+    {
+      "id": "R30",
+      "nombre": "Gusano peludo",
+      "condiciones": [
+        {"hecho": "presencia_insecto", "valor": "insecto_debajo_plantas_dia"},
+        {"hecho": "presencia_insecto", "valor": "oruga_pelos_verde_marron_negro"},
+        {"hecho": "sintoma_hoja", "valor": "mordidos_maltratados_pelos"},
+        {"hecho": "sintoma_fruto", "valor": "mordidos_maltratados_pelos"}
+      ],
+      "conclusion": {
+        "diagnostico": "Gusano peludo"
+      }
+    },
+    {
+      "id": "R31",
+      "nombre": "Xanthomonas fragariae (Mancha angular de la hoja)",
+      "condiciones": [
+        {"hecho": "sintoma_lesion", "valor": "pequenas"},
+        {"hecho": "sintoma_caliz", "valor": "marron"}
+      ],
+      "conclusion": {
+        "diagnostico": "Xanthomonas fragariae (Mancha angular de la hoja)"
+      }
+    },
+    {
+      "id": "R32",
+      "nombre": "Rhodococcus fascians (Fasciación)",
+      "condiciones": [
+        {"hecho": "sintoma_fresa", "valor": "malformada"},
+        {"hecho": "sintoma_hoja", "valor": "islas_verdes"}
+      ],
+      "conclusion": {
+        "diagnostico": "Rhodococcus fascians (Fasciación)"
+      }
+    },
+    {
+      "id": "R33",
+      "nombre": "Pseudomonas syringae (Tizón bacterial)",
+      "condiciones": [
+        {"hecho": "sintoma_corona", "valor": "lesiones"},
+        {"hecho": "sintoma_planta", "valor": "marchitamiento"},
+        {"hecho": "sintoma_interno", "valor": "decoloracion_interna"}
+      ],
+      "conclusion": {
+        "diagnostico": "Pseudomonas syringae (Tizón bacterial)"
+      }
+    },
+    {
+      "id": "R34",
+      "nombre": "Frankliniella occidentalis (Thrips occidental de las flores)",
+      "condiciones": [
+        {"hecho": "sintoma_flor", "valor": "danos_base"},
+        {"hecho": "sintoma_general", "valor": "manchas_pardas"}
+      ],
+      "conclusion": {
+        "diagnostico": "Frankliniella occidentalis (Thrips occidental de las flores)"
+      }
+    },
+    {
+      "id": "R35",
+      "nombre": "Geotrichum candidum (Pudrición agria)",
+      "condiciones": [
+        {"hecho": "sintoma_general", "valor": "olor_agrio"},
+        {"hecho": "sintoma_superficie", "valor": "blanco"},
+        {"hecho": "sintoma_pudricion", "valor": "empapada"}
+      ],
+      "conclusion": {
+        "diagnostico": "Geotrichum candidum (Pudrición agria)"
+      }
+    },
+    {
+      "id": "R36",
+      "nombre": "Neopestalotiopsis (Mancha foliar y pudrición de la fruta)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "manchas_marron"},
+        {"hecho": "sintoma_fruto", "valor": "pudricion_negro"}
+      ],
+      "conclusion": {
+        "diagnostico": "Neopestalotiopsis (Mancha foliar y pudrición de la fruta)"
+      }
+    },
+    {
+      "id": "R37",
+      "nombre": "Ramularia tulasnei (Mancha foliar blanca)",
+      "condiciones": [
+        {"hecho": "sintoma_hoja", "valor": "manchas_circulares_purpura"},
+        {"hecho": "sintoma_hoja", "valor": "centro_blanco"}
+      ],
+      "conclusion": {
+        "diagnostico": "Ramularia tulasnei (Mancha foliar blanca)"
+      }
+    }
+  ]
+}
