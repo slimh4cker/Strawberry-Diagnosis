@@ -23,7 +23,6 @@ def iniciar_busqueda(lista_sintomas, base_conocimiento):
         return []
     
     resultados = []
-    print(lista_sintomas)
     
     # si no, iniciar la busqueda por cada elemento de la base de conocimiento
     for padecimiento in base_conocimiento:
