@@ -22,7 +22,6 @@ def busqueda_valida():
     assert nombre == "Picudo de la fresa"
     
 
-
 def busqueda_insuficiente():
     # Sintomas insuficientes
     sintomas_insuficientes = [
@@ -60,8 +59,26 @@ def busqueda_multiples():
     assert any(p.get("nombre", "") == "Picudo de la fresa" for p in resultados)
     assert any(p.get("nombre", "") == "Gusano soldado de la remolacha" for p in resultados)
 
+def busqueda_inexistente():
+    # Sintomas que no coinciden con ningun padecimiento
+    sintomas_inexistentes = [
+        {"hecho": "condicion_ambiental", "valor": "falta_ventilacion"},
+        {"hecho": "sintoma_hoja", "valor": "danada"},
+        {"hecho": "sintoma_planta", "valor": "chiquita"},
+      ]
+    
+    # Obtener la base de conocimiento
+    base_conocimiento = lib.obtener_base.obtener_base()
+    
+    # Iniciar la busqueda
+    resultados = motores.retornar_concordancias.iniciar_busqueda(sintomas_inexistentes, base_conocimiento)
+    
+    assert len(resultados) == 0
+
+
 if __name__ == "__main__":
     busqueda_valida()
     busqueda_insuficiente()
     busqueda_multiples()
+    busqueda_inexistente()
     print("Todas las pruebas pasaron.")
