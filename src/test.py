@@ -145,8 +145,16 @@ if __name__ == "__main__":
     
     Si todas las pruebas pasan (ninguna assertion falla), se muestra un mensaje de éxito.
     """
-    busqueda_valida()
-    busqueda_insuficiente()
-    busqueda_multiples()
-    busqueda_inexistente()
+    tests = [
+      ("busqueda_valida", busqueda_valida),
+      ("busqueda_insuficiente", busqueda_insuficiente),
+      ("busqueda_multiples", busqueda_multiples),
+      ("busqueda_inexistente", busqueda_inexistente),
+    ]
+
+    for nombre, prueba in tests:
+      print(f"Ejecutando {nombre}...")
+      prueba()
+      print(f"{nombre} pasada.\n")
+
     print("Todas las pruebas pasaron.")
