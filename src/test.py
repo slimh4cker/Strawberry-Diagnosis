@@ -57,6 +57,9 @@ def busqueda_multiples():
     
     assert len(resultados) > 1
 
+    assert any(p.get("nombre", "") == "Picudo de la fresa" for p in resultados)
+    assert any(p.get("nombre", "") == "Gusano soldado de la remolacha" for p in resultados)
+
 if __name__ == "__main__":
     busqueda_valida()
     busqueda_insuficiente()
