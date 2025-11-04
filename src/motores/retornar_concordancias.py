@@ -18,7 +18,8 @@
 # base_conocimiento: lista de padecimientos obtenida de la base de conocimiento, desde el metodo obtener_base()
 
 def iniciar_busqueda(lista_sintomas, base_conocimiento):
-    if len(lista_sintomas) < 3:
+    # filtrado en caso de que sean menos de 3 sintomas
+    if len(lista_sintomas) < 2:
         return []
     
     resultados = []
@@ -26,13 +27,16 @@ def iniciar_busqueda(lista_sintomas, base_conocimiento):
     
     # si no, iniciar la busqueda por cada elemento de la base de conocimiento
     for padecimiento in base_conocimiento:
-        # encontrar enfermedades que tengan esta enfermedad
-        if cantidad_coincidencias(lista_sintomas, padecimiento) >= 3:
+        # consultar cada regla
+        if consultar_enfermedad(lista_sintomas, padecimiento):
             resultados.append(padecimiento)
             
     return resultados
 
-def cantidad_coincidencias(lista_sintomas, padecimiento):
+# Funcion para consultar si un padecimiento coincide con los sintomas del usuario
+# Devuelve True si el padecimiento coincide con al menos 3 sintomas del usuario
+# Devuelve False en caso contrario
+def consultar_enfermedad(lista_sintomas, padecimiento):
     contador = 0
     
     for sintoma_usuario in lista_sintomas:
@@ -40,5 +44,7 @@ def cantidad_coincidencias(lista_sintomas, padecimiento):
             if (sintoma_usuario == sintoma_padecimiento):
                 contador += 1
                 
-    return contador
+    if contador >= 2:
+        return True
+    return False
 
