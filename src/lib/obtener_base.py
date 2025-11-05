@@ -1,64 +1,82 @@
 
-from pathlib import Path
-import json
-from typing import Any, List
+# Importamos las bibliotecas necesarias
+from pathlib import Path  # Para manejo de rutas de archivos de forma portable
+import json              # Para leer y parsear archivos JSON
+from typing import Any, List  # Para anotaciones de tipo en Python
 
 
 def obtener_base() -> List[Any]:
-	"""Lee `src/base_conocimiento.json` y devuelve su contenido como lista.
+    """Lee el archivo de base de conocimiento y lo convierte en una lista de Python.
+    
+    El archivo `src/base_conocimiento.json` contiene la base de conocimiento del sistema
+    experto para diagnóstico de enfermedades en fresas. Esta función se encarga de leer
+    ese archivo y convertir su contenido en una estructura de datos de Python (lista).
 
-	Comportamiento:
-	- Si el JSON es una lista, se devuelve tal cual.
-	- Si el JSON es un dict con una sola clave cuyo valor es una lista, se devuelve esa lista.
-	- Si el JSON es un dict con múltiples valores que son listas, se concatenan y se devuelven.
-	- En cualquier otro caso se devuelve una lista con el objeto JSON como único elemento.
+    Comportamiento según el tipo de contenido en el JSON:
+    - Si el JSON contiene una lista: se devuelve directamente
+    - Si es un diccionario con una sola clave que contiene una lista: se extrae esa lista
+    - Si es un diccionario con varias listas: se concatenan todas las listas encontradas
+    - Para cualquier otro caso: se envuelve el contenido en una lista de un elemento
 
-	En caso de error (archivo no encontrado o JSON inválido) se devuelve lista vacía.
-	"""
+    Returns:
+        List[Any]: Lista con el contenido de la base de conocimiento
+                  Lista vacía en caso de error (archivo no encontrado o JSON inválido)
+    """
 	# base_conocimiento.json se encuentra en el directorio padre de este archivo (src/)
-	base_path = Path(__file__).resolve().parents[1] / "base_conocimiento.json"
+    # Construimos la ruta al archivo base_conocimiento.json
+    # __file__ es la ruta al archivo actual (obtener_base.py)
+    # parents[1] nos da el directorio padre del padre (src/)
+    base_path = Path(__file__).resolve().parents[1] / "base_conocimiento.json"
 
-	try:
-		text = base_path.read_text(encoding="utf-8")
-		data = json.loads(text)
-	except FileNotFoundError:
-		# Archivo no encontrado
-		return []
-	except json.JSONDecodeError:
-		# JSON inválido
-		return []
+    try:
+        # Intentamos leer el archivo como texto UTF-8
+        text = base_path.read_text(encoding="utf-8")
+        # Convertimos el texto JSON en un objeto Python
+        data = json.loads(text)
+    except FileNotFoundError:
+        # Si el archivo no existe, retornamos lista vacía
+        return []
+    except json.JSONDecodeError:
+        # Si el JSON es inválido, retornamos lista vacía
+        return []
 
-	# Si ya es una lista, devolverla
-	if isinstance(data, list):
-		return data
+    # Primer caso: si el JSON ya es una lista, la retornamos directamente
+    if isinstance(data, list):
+        return data
 
 	# Si es un dict, tratar de convertirlo en lista de forma razonable
-	if isinstance(data, dict):
-		# Caso común: dict con una sola clave cuyo valor es una lista
-		if len(data) == 1:
-			only = next(iter(data.values()))
-			if isinstance(only, list):
-				return only
+    # Segundo caso: si es un diccionario, intentamos extraer listas de él
+    if isinstance(data, dict):
+        # Caso más común: diccionario con una sola clave que contiene una lista
+        # Por ejemplo: {"reglas": [...]} -> extraemos solo la lista
+        if len(data) == 1:
+            only = next(iter(data.values()))  # Obtenemos el único valor
+            if isinstance(only, list):
+                return only
 
-		# Si hay varias claves y alguna contiene listas, concatenarlas
-		list_values = [v for v in data.values() if isinstance(v, list)]
-		if list_values:
-			result: List[Any] = []
-			for l in list_values:
-				result.extend(l)
-			if result:
-				return result
+        # Si el diccionario tiene varias claves, buscamos todas las que contengan listas
+        # Por ejemplo: {"reglas": [...], "hechos": [...]} -> concatenamos las listas
+        list_values = [v for v in data.values() if isinstance(v, list)]
+        if list_values:
+            result: List[Any] = []
+            for l in list_values:
+                result.extend(l)  # Concatenamos todas las listas encontradas
+            if result:
+                return result
 
-		# En último caso, devolver el dict como único elemento de una lista
-		return [data]
+        # Si no encontramos listas útiles, devolvemos el diccionario como un elemento
+        return [data]
 
-	# Para otros tipos (números, strings, etc.) devolverlos envueltos en lista
-	return [data]
+    # Tercer caso: para cualquier otro tipo de dato (str, int, float, etc.)
+    # lo envolvemos en una lista para mantener la consistencia del retorno
+    return [data]
 
 
 if __name__ == "__main__":
-	# Pequeña prueba manual cuando se ejecuta el módulo directamente
-	lista = obtener_base()
-	print("Leidos", len(lista), "elementos desde base_conocimiento.json")
-	print(lista)
+    # Hacemos una pequeña prueba manual de la función
+    lista = obtener_base()
+    # Mostramos cuántos elementos se leyeron
+    print("Leidos", len(lista), "elementos desde base_conocimiento.json")
+    # Y mostramos el contenido para verificación
+    print(lista)
 
