@@ -40,10 +40,10 @@ def consultar_enfermedad(lista_sintomas, padecimiento):
     
     for sintoma_usuario in lista_sintomas:
         for sintoma_padecimiento in padecimiento.get("condiciones", []):
-            if (sintoma_usuario == sintoma_padecimiento):
+            # Comparar explícitamente cada campo
+            if (sintoma_usuario.get("hecho") == sintoma_padecimiento.get("hecho") and
+                sintoma_usuario.get("valor") == sintoma_padecimiento.get("valor")):
                 contador += 1
                 
-    if contador >= 2:
-        return True
-    return False
+    return contador >= 2
 
