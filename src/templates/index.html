@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Experto de Fresas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #c0392b;
+        }
+
+        .categoria {
+            background: #f9ecec;
+            border: 1px solid #e5bcbc;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .categoria h2 {
+            color: #a93226;
+            font-size: 18px;
+        }
+
+        .boton {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton:hover {
+            background-color: #c0392b;
+        }
+
+        #resultado {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #2e4053;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Sistema Experto - Diagnóstico de Enfermedades en Fresas</h1>
+
+    <form action="/buscar" method="post">
+        {% for categoria, valores in sintomas.items() %}
+            <div class="categoria">
+                <h2>{{ categoria.replace('sintoma_', '').capitalize() }}</h2>
+                {% for valor in valores %}
+                    <label>
+                        <input type="checkbox" name="sintomas" value="{{ categoria }}:{{ valor }}">
+                        {{ valor.replace('_', ' ') }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="button" class="boton" id="btnDiagnosticar">Diagnosticar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+
+    <script>
+    document.getElementById("btnDiagnosticar").addEventListener("click", async () => {
+        const seleccionados = Array.from(document.querySelectorAll('input[name="sintomas"]:checked'))
+            .map(cb => cb.value);
+
+        console.log("JS DEBUG - seleccionados:", seleccionados);
+
+        if (seleccionados.length === 0) {
+            document.getElementById("resultado").innerText = "Por favor selecciona al menos un síntoma.";
+            return;
+        }
+
+        try {
+            const respuesta = await fetch("/diagnosticar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ sintomas: seleccionados })
+            });
+
+            if (!respuesta.ok) {
+                console.error("Respuesta no OK:", respuesta.status, await respuesta.text());
+                document.getElementById("resultado").innerText = "Error del servidor al diagnosticar (mira la consola del servidor).";
+                return;
+            }
+
+            const data = await respuesta.json();
+            console.log("JS DEBUG - respuesta del servidor:", data);
+
+            if (!data.ok) {
+                document.getElementById("resultado").innerText = "Error en diagnóstico: " + (data.error || "desconocido");
+                return;
+            }
+
+            if (!data.resultados || data.resultados.length === 0) {
+                document.getElementById("resultado").innerText = "ℹ️ " + (data.mensaje || "No se encontró diagnóstico.");
+                return;
+            }
+
+            // Mostrar resultados detallados
+            let html = `<div><strong>${data.mensaje}</strong></div>`;
+            data.resultados.forEach((r, idx) => {
+                html += `<div style="text-align:left; margin-top:10px; padding:10px; border-radius:8px; background:#fff; box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+                            <div style="font-weight:700">${idx+1}. ${r.nombre} <span style="color:#666">(${r.id || ""})</span></div>
+                            <div style="margin-top:6px"><strong>Síntomas coincidentes:</strong></div>
+                            <ul>`;
+                (r.coincidencias || []).forEach(c => {
+                    html += `<li>${c.hecho}: ${c.valor}</li>`;
+                });
+                html += `</ul>`;
+                if (r.conclusion && r.conclusion.diagnostico) {
+                    html += `<div><strong>Diagnóstico final:</strong> ${r.conclusion.diagnostico}</div>`;
+                }
+                html += `</div>`;
+            });
+
+            document.getElementById("resultado").innerHTML = html;
+        } catch (err) {
+            console.error("JS fetch error:", err);
+            document.getElementById("resultado").innerText = "Error de conexión al servidor.";
+        }
+    });
+</script>
+
+    
+</body>
+</html>

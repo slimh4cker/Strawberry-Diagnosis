@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados - Sistema Experto de Fresas 🍓</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Resultados del Diagnóstico</h1>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% elif resultados %}
+        <ul>
+        {% for r in resultados %}
+            <li>{{ r }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron enfermedades coincidentes.</p>
+    {% endif %}
+
+    <a href="/">🔙 Volver</a>
+</body>
+</html>
