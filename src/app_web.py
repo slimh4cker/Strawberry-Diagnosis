@@ -34,62 +34,51 @@ def index():
 def diagnosticar():
     try:
         payload = request.get_json(force=True)
-        print(f"[DEBUG] /diagnosticar payload raw: {payload}")
         sintomas_recibidos = payload.get("sintomas", [])
-        print(f"[DEBUG] Síntomas recibidos (strings): {sintomas_recibidos}")
 
-        # Convertir a lista de dicts {"hecho": "...", "valor": "..."}
+        if not sintomas_recibidos:
+            return jsonify({"resultado": "⚠️ No seleccionaste síntomas."})
+
+        # Convertir a lista de diccionarios {"hecho": "...", "valor": "..."}
         lista_sintomas = []
         for s in sintomas_recibidos:
             if ":" in s:
                 hecho, valor = s.split(":", 1)
                 lista_sintomas.append({"hecho": hecho, "valor": valor})
-            else:
-                parts = s.split("_", 1)
-                if len(parts) == 2:
-                    hecho, valor = parts
-                    lista_sintomas.append({"hecho": hecho, "valor": valor})
-        print(f"[DEBUG] Síntomas convertidos para motor: {lista_sintomas}")
 
         base = obtener_base()
-        # tamaño base y ejemplo
-        print(f"[DEBUG] Base de conocimiento cargada. Reglas: {len(base)}")
-
-        # Llamada al motor 
         resultados = motor.iniciar_busqueda(lista_sintomas, base)
-        print(f"[DEBUG] Resultados crudos del motor (len={len(resultados)}):")
-        for r in resultados:
-            print("  -", r.get("id"), r.get("nombre"))
 
-        # nombre + condiciones que coincidieron y los sintomas
-        respuesta_detallada = []
-        for padecimiento in resultados:
-            condiciones_padecimiento = padecimiento.get("condiciones", [])
-            coincidencias = []
-            for cond in condiciones_padecimiento:
-                for s in lista_sintomas:
-                    if s.get("hecho") == cond.get("hecho") and s.get("valor") == cond.get("valor"):
-                        coincidencias.append(cond)
-            respuesta_detallada.append({
-                "id": padecimiento.get("id"),
-                "nombre": padecimiento.get("nombre"),
-                "coincidencias": coincidencias,
-                "conclusion": padecimiento.get("conclusion", {})
-            })
+        # Si el motor devuelve coincidencias
+        if resultados:
+            mejor = resultados[0]  # tomamos la primera (mayor coincidencia)
+            diagnostico = mejor.get("conclusion", {}).get("diagnostico", mejor.get("nombre", "Desconocido"))
 
-        if not respuesta_detallada:
-            mensaje = "No es posible diagnosticar con los síntomas proporcionados."
-        else:
-            mensaje = f"Se encontraron {len(respuesta_detallada)} coincidencia(s)."
+            # construimos una descripción más detallada si existe
+            descripcion = mejor.get("descripcion", "")
+            condiciones = [f"{c['hecho'].replace('sintoma_', '').capitalize()}: {c['valor'].replace('_', ' ')}"
+                           for c in mejor.get("condiciones", [])]
 
-        return jsonify({
-            "ok": True,
-            "mensaje": mensaje,
-            "resultados": respuesta_detallada
-        })
+            texto_condiciones = "<br>".join(f"• {c}" for c in condiciones)
+
+            resultado_html = f"""
+                <h4 class='text-success'>🩺 {diagnostico}</h4>
+                {'<p class="text-muted">' + descripcion + '</p>' if descripcion else ''}
+                <div class='text-start mx-auto mt-2' style='max-width:600px'>
+                    <p class='fw-semibold'>Síntomas característicos:</p>
+                    <p>{texto_condiciones}</p>
+                </div>
+            """
+
+            return jsonify({"resultado": resultado_html})
+
+        # Si no hubo coincidencias
+        return jsonify({"resultado": "❌ No se puede diagnosticar en este momento."})
+
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"ok": False, "error": str(e)}), 500
+        return jsonify({"resultado": f"⚠️ Error interno: {str(e)}"})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
