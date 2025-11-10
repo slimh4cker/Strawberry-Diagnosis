@@ -1,49 +1,50 @@
-## Este codigo resuelve la pregunta "Tengo una lista de sintomas, cuales padecimientos tiene mi arbusto de fresas?"
-# esta funcion es recursivay no utiliza variables globales
+def contar_coincidencias(sintomas, condiciones, s_idx=0, c_idx=0, count=0):
+    """Cuenta coincidencias recursivamente entre síntomas y condiciones."""
+    # Caso base: ya recorrimos todos los síntomas
+    if s_idx >= len(sintomas):
+        return count
+    
+    # Si terminamos las condiciones del síntoma actual, pasamos al siguiente síntoma
+    if c_idx >= len(condiciones):
+        return contar_coincidencias(sintomas, condiciones, s_idx + 1, 0, count)
+    
+    # Obtenemos el síntoma y condición actual para comparar
+    s = sintomas[s_idx]
+    c = condiciones[c_idx]
+    
+    # Verificamos coincidencia en ambos campos
+    if s.get("hecho") == c.get("hecho") and s.get("valor") == c.get("valor"):
+        count += 1
+    
+    # Llamada recursiva para siguiente condición
+    return contar_coincidencias(sintomas, condiciones, s_idx, c_idx + 1, count)
 
-# pasos
-# 1. Recibir la lista de sintomas
+
+def consultar_enfermedad(lista_sintomas, padecimiento):
+    """Determina si un padecimiento coincide con los síntomas."""
+    condiciones = padecimiento.get("condiciones", [])
+    # Requiere al menos 2 coincidencias
+    return contar_coincidencias(lista_sintomas, condiciones) >= 2
 
 
-# Funcion con la que realizar la busqueda
-# lista_sintomas: lista de sintomas proporcionada por el usuario 
-#       Formato: {[
-#        {"hecho": "sintoma_hoja_vieja", "valor": "marchita"},
-#        {"hecho": "sintoma_raiz", "valor": "blanca"},
-#        {"hecho": "sintoma_raiz", "valor": "podrida"},
-#        {"hecho": "sintoma_corona", "valor": "descolorida"},
-#        {"hecho": "sintoma_planta", "valor": "muerte"}
-#      ]}
+def filtrar_padecimientos(sintomas, base, idx=0, resultados=None):
+    """Filtra recursivamente los padecimientos que coinciden con los síntomas."""
+    if resultados is None:
+        resultados = []
+    
+    # Caso base: recorrimos toda la base de conocimiento
+    if idx >= len(base):
+        return resultados
+    
+    # Si hay coincidencia, agregamos a resultados
+    if consultar_enfermedad(sintomas, base[idx]):
+        resultados.append(base[idx])
+    
+    # Llamada recursiva para siguiente padecimiento
+    return filtrar_padecimientos(sintomas, base, idx + 1, resultados)
 
-# base_conocimiento: lista de padecimientos obtenida de la base de conocimiento, desde el metodo obtener_base()
 
 def iniciar_busqueda(lista_sintomas, base_conocimiento):
-    # filtrado en caso de que sean menos de 3 sintomas
-    if len(lista_sintomas) < 2:
-        return []
-    
-    resultados = []
-    
-    # si no, iniciar la busqueda por cada elemento de la base de conocimiento
-    for padecimiento in base_conocimiento:
-        # consultar cada regla
-        if consultar_enfermedad(lista_sintomas, padecimiento):
-            resultados.append(padecimiento)
-            
-    return resultados
-
-# Funcion para consultar si un padecimiento coincide con los sintomas del usuario
-# Devuelve True si el padecimiento coincide con al menos 3 sintomas del usuario
-# Devuelve False en caso contrario
-def consultar_enfermedad(lista_sintomas, padecimiento):
-    contador = 0
-    
-    for sintoma_usuario in lista_sintomas:
-        for sintoma_padecimiento in padecimiento.get("condiciones", []):
-            # Comparar explícitamente cada campo
-            if (sintoma_usuario.get("hecho") == sintoma_padecimiento.get("hecho") and
-                sintoma_usuario.get("valor") == sintoma_padecimiento.get("valor")):
-                contador += 1
-                
-    return contador >= 2
-
+    """Inicia la búsqueda recursiva de padecimientos."""
+    # Validación mínima de síntomas requeridos
+    return [] if len(lista_sintomas) < 2 else filtrar_padecimientos(lista_sintomas, base_conocimiento)
