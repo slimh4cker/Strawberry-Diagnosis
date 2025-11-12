@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Experto de Fresas 🍓</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-4">
+            <h1 class="titulo-principal">🍓 Sistema Experto - Diagnóstico de Enfermedades en Fresas</h1>
+            <p class="text-muted">Selecciona los síntomas observados para obtener un posible diagnóstico.</p>
+        </div>
+
+        <form id="formulario" class="card shadow-sm p-4 border-0 rounded-4">
+            {% for categoria, valores in sintomas.items() %}
+                <div class="categoria mb-4">
+                    <h4 class="fw-semibold text-danger mb-3">
+                        {{ categoria.replace('sintoma_', '').capitalize() }}
+                    </h4>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+                        {% for valor in valores %}
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="checkbox" name="sintomas" value="{{ categoria }}:{{ valor }}">
+                                <label class="form-check-label text-capitalize">{{ valor.replace('_', ' ') }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-danger btn-lg px-5" id="btnDiagnosticar">Diagnosticar</button>
+            </div>
+        </form>
+
+        <div id="resultado" class="resultado mt-4 text-center fw-semibold"></div>
+    </div>
+
+    <script>
+    document.getElementById("btnDiagnosticar").addEventListener("click", async () => {
+        const seleccionados = Array.from(document.querySelectorAll('input[name="sintomas"]:checked'))
+            .map(cb => cb.value);
+
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = ""; // limpia antes de mostrar algo nuevo
+
+        if (seleccionados.length === 0) {
+            resultado.innerHTML = "<div class='alert alert-warning mt-3'>⚠️ Por favor selecciona al menos un síntoma.</div>";
+            return;
+        }
+
+        const respuesta = await fetch("/diagnosticar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sintomas: seleccionados })
+        });
+
+        const data = await respuesta.json();
+        resultado.innerHTML = `<div class='alert alert-light border mt-3 p-3 shadow-sm'>${data.resultado}</div>`;
+    });
+</script>
+
+</body>
+</html>
