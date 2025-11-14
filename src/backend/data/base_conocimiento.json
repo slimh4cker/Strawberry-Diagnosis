@@ -1,18 +1,6 @@
 {
   "hechos": [
     {
-      "id": "R1",
-      "nombre": "Condiciones favorables para hongos en fresas",
-      "condiciones": [
-        {"hecho": "condicion_ambiental", "valor": "falta_ventilacion"},
-        {"hecho": "condicion_ambiental", "valor": "falta_luz"},
-        {"hecho": "condicion_ambiental", "valor": "alta_humedad"}
-      ],
-      "conclusion": {
-        "diagnostico": "Condiciones favorables para hongos en fresas"
-      }
-    },
-    {
       "id": "R2",
       "nombre": "Botrytis cinerea (Moho gris)",
       "condiciones": [
@@ -32,7 +20,7 @@
       "condiciones": [
         {"hecho": "sintoma_planta", "valor": "chiquita"},
         {"hecho": "sintoma_hoja", "valor": "marchita"},
-        {"hecho": "sintoma_corona", "valor": "manchas_oscuras"},
+        {"hecho": "sintoma_corona", "valor": "manchas_negras"},
         {"hecho": "sintoma_raiz", "valor": "podrida_negra"},
         {"hecho": "sintoma_fruto", "valor": "manchas_cafe"},
         {"hecho": "sintoma_fruto", "valor": "morado_oscuro"},
@@ -48,10 +36,10 @@
       "nombre": "Phytophthora fragariae var fragariae (Pudrición de la raíz roja)",
       "condiciones": [
         {"hecho": "sintoma_planta", "valor": "marchitez_general"},
-        {"hecho": "sintoma_raiz_joven", "valor": "podrida"},
-        {"hecho": "sintoma_raiz_principal", "valor": "estela_central_roja"},
+        {"hecho": "sintoma_raiz", "valor": "podrida"},
+        {"hecho": "sintoma_raiz", "valor": "estela_central_roja"},
         {"hecho": "sintoma_raiz", "valor": "corteza_desprendible"},
-        {"hecho": "sintoma_hoja_vieja", "valor": "color_amarillo_rojizo"},
+        {"hecho": "sintoma_hoja", "valor": "color_amarillo_rojizo"},
         {"hecho": "sintoma_fruto", "valor": "escasos"}
       ],
       "conclusion": {
@@ -64,7 +52,7 @@
       "condiciones": [
         {"hecho": "sintoma_estolon", "valor": "muerto"},
         {"hecho": "sintoma_raiz", "valor": "podrida"},
-        {"hecho": "sintoma_peciolo", "valor": "lesiones_oscuras"},
+        {"hecho": "sintoma_peciolo", "valor": "manchas_negras"},
         {"hecho": "sintoma_base_hoja", "valor": "lesiones"},
         {"hecho": "sintoma_corona", "valor": "podrida"},
         {"hecho": "sintoma_fruto", "valor": "podrido"},
@@ -78,7 +66,7 @@
       "id": "R6",
       "nombre": "Fusarium sp (Marchitez por Fusarium)",
       "condiciones": [
-        {"hecho": "sintoma_hoja_vieja", "valor": "marchita"},
+        {"hecho": "sintoma_hoja", "valor": "marchita"},
         {"hecho": "sintoma_raiz", "valor": "blanca"},
         {"hecho": "sintoma_raiz", "valor": "podrida"},
         {"hecho": "sintoma_corona", "valor": "descolorida"},
@@ -209,8 +197,8 @@
       "id": "R16",
       "nombre": "Trips",
       "condiciones": [
-        {"hecho": "sintoma_fruto_joven", "valor": "rayas_plateadas"},
-        {"hecho": "sintoma_fruto_maduro", "valor": "deformados_piel_fea"}
+        {"hecho": "sintoma_fruto", "valor": "rayas_plateadas"},
+        {"hecho": "sintoma_fruto", "valor": "deformados_piel_fea"}
       ],
       "conclusion": {
         "diagnostico": "Trips"
@@ -280,7 +268,7 @@
       "id": "R22",
       "nombre": "Gusano falso medidor",
       "condiciones": [
-        {"hecho": "sintoma_hoja_nueva", "valor": "mordidas"},
+        {"hecho": "sintoma_hoja", "valor": "mordidas"},
         {"hecho": "sintoma_hoja", "valor": "agujeros_irregulares"},
         {"hecho": "presencia_insecto", "valor": "larvas_movimiento_u"}
       ],
@@ -305,8 +293,8 @@
       "id": "R24",
       "nombre": "Ácaro del ciclamino",
       "condiciones": [
-        {"hecho": "sintoma_hoja_nueva", "valor": "deformadas_arrugadas"},
-        {"hecho": "sintoma_planta", "valor": "crecimiento_lento"},
+        {"hecho": "sintoma_hoja", "valor": "deformadas_arrugadas"},
+        {"hecho": "sintoma_planta", "valor": "crecimiento_detenido"},
         {"hecho": "sintoma_hoja", "valor": "amarillentas"},
         {"hecho": "sintoma_fruto", "valor": "deformes"}
       ],
