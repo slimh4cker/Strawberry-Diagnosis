@@ -18,11 +18,7 @@
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "danada"},
         {"hecho": "sintoma_hoja", "valor": "cubierta_gris"},
-<<<<<<< HEAD
         {"hecho": "sintoma_pedunculo", "valor": "color_cafe"},
-=======
-        {"hecho": "sintoma_petalo_pedunculo", "valor": "color_cafe"},
->>>>>>> origin/main
         {"hecho": "sintoma_fruto", "valor": "manchas_cafe"},
         {"hecho": "sintoma_fruto", "valor": "zonas_acuosas"}
       ],
@@ -40,11 +36,7 @@
         {"hecho": "sintoma_raiz", "valor": "podrida_negra"},
         {"hecho": "sintoma_fruto", "valor": "manchas_cafe"},
         {"hecho": "sintoma_fruto", "valor": "morado_oscuro"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "olor_feo"},
-=======
-        {"hecho": "sintoma_general", "valor": "olor_feo"},
->>>>>>> origin/main
         {"hecho": "sintoma_fruto", "valor": "moho_blanco_humedo"}
       ],
       "conclusion": {
@@ -104,11 +96,7 @@
         {"hecho": "sintoma_fruto", "valor": "lesiones"},
         {"hecho": "sintoma_fruto", "valor": "manchas_circulares_marron"},
         {"hecho": "sintoma_fruto", "valor": "centros_necroticos_rosada"},
-<<<<<<< HEAD
         {"hecho": "sintoma_fruto", "valor": "podrido"},
-=======
-        {"hecho": "sintoma_fruto", "valor": "pudricion"},
->>>>>>> origin/main
         {"hecho": "sintoma_tallo", "valor": "marchito"},
         {"hecho": "sintoma_peciolo", "valor": "marchito"},
         {"hecho": "sintoma_hoja", "valor": "manchas_negras"}
@@ -135,11 +123,7 @@
       "nombre": "Podosphaera aphanis (Oídio)",
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "enrollamiento_limites"},
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "manchas_blancas"},
-=======
-        {"hecho": "sintoma_hoja", "valor": "manchas_blancas_micelio"},
->>>>>>> origin/main
         {"hecho": "sintoma_hoja", "valor": "puntos_negros"},
         {"hecho": "sintoma_fruto", "valor": "opacos"}
       ],
@@ -151,13 +135,8 @@
       "id": "R10",
       "nombre": "Alternaria spp (Mancha foliar por Alternaria)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "manchas_negras"},
         {"hecho": "sintoma_fruto", "valor": "manchas_negras"},
-=======
-        {"hecho": "sintoma_hoja", "valor": "lesiones_negras"},
-        {"hecho": "sintoma_fruto", "valor": "lesiones_negras"},
->>>>>>> origin/main
         {"hecho": "sintoma_hoja", "valor": "halo_amarillo"}
       ],
       "conclusion": {
@@ -168,11 +147,7 @@
       "id": "R11",
       "nombre": "Rhizopus stolonifer (Pudrición blanda)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_fruto", "valor": "manchas_blandas"},
-=======
-        {"hecho": "sintoma_fruto", "valor": "lesiones_blandas"},
->>>>>>> origin/main
         {"hecho": "sintoma_fruto", "valor": "goteo_liquido_rojo"},
         {"hecho": "sintoma_fruto", "valor": "cubierta_blanca_negra"}
       ],
@@ -211,11 +186,7 @@
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "arrugadas"},
         {"hecho": "sintoma_hoja", "valor": "pegajosas"},
-<<<<<<< HEAD
         {"hecho": "presencia_insecto", "valor": "hormigas_alrededor"},
-=======
-        {"hecho": "sintoma_planta", "valor": "hormigas_alrededor"},
->>>>>>> origin/main
         {"hecho": "presencia_insecto", "valor": "pequenos_insectos_tallo"}
       ],
       "conclusion": {
@@ -228,11 +199,7 @@
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "secas"},
         {"hecho": "sintoma_hoja", "valor": "telaranas_muy_pequenas"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "debilitada"}
-=======
-        {"hecho": "sintoma_planta", "valor": "debil_seca"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Araña roja"
@@ -266,11 +233,7 @@
       "nombre": "Gusanos cortadores",
       "condiciones": [
         {"hecho": "sintoma_planta", "valor": "cortadas_ras_suelo"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "marchitez_general"},
-=======
-        {"hecho": "sintoma_planta", "valor": "marchita"},
->>>>>>> origin/main
         {"hecho": "presencia_insecto", "valor": "gusanos_gordos_tierra"}
       ],
       "conclusion": {
@@ -283,11 +246,7 @@
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "agujeros_grandes"},
         {"hecho": "sintoma_fruto", "valor": "mordidas"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "baba_brillante"}
-=======
-        {"hecho": "sintoma_general", "valor": "baba_brillante"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Caracoles y babosas"
@@ -335,13 +294,8 @@
       "condiciones": [
         {"hecho": "presencia_insecto", "valor": "polilla_color_cafe"},
         {"hecho": "presencia_insecto", "valor": "gusanos_cabeza_dura_cafe"},
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "mordidas_agujeros"},
         {"hecho": "sintoma_fruto", "valor": "mordidas"}
-=======
-        {"hecho": "sintoma_hoja", "valor": "mordidas"},
-        {"hecho": "sintoma_fruto", "valor": "mordidos"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Gusano del elote de maiz"
@@ -352,15 +306,9 @@
       "nombre": "Ácaro del ciclamino",
       "condiciones": [
         {"hecho": "sintoma_hoja_nueva", "valor": "deformadas_arrugadas"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "crecimiento_lento"},
         {"hecho": "sintoma_hoja", "valor": "amarillentas"},
         {"hecho": "sintoma_fruto", "valor": "deformes"}
-=======
-        {"hecho": "sintoma_planta", "valor": "crecimiento_detenido"},
-        {"hecho": "sintoma_hoja", "valor": "amarillentas"},
-        {"hecho": "sintoma_fruto", "valor": "pequenos_deformes"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Ácaro del ciclamino"
@@ -383,11 +331,7 @@
       "condiciones": [
         {"hecho": "presencia_insecto", "valor": "ciempes_en_cerca_planta"},
         {"hecho": "sintoma_raiz", "valor": "dano"},
-<<<<<<< HEAD
         {"hecho": "sintoma_fruto", "valor": "mordidas"}
-=======
-        {"hecho": "sintoma_fruto_cerca_suelo", "valor": "mordidas_redondas_pequenas"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Ciempiés de jardín"
@@ -420,17 +364,10 @@
       "id": "R29",
       "nombre": "Escarabajos de la raíz",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "amarillentas"},
         {"hecho": "sintoma_hoja", "valor": "marchita"},
         {"hecho": "sintoma_planta", "valor": "muerte"},
         {"hecho": "sintoma_fruto", "valor": "deformes"}
-=======
-        {"hecho": "sintoma_planta", "valor": "baja_normal"},
-        {"hecho": "sintoma_hoja", "valor": "amarillentas_marchitas"},
-        {"hecho": "sintoma_planta_joven", "valor": "muerte"},
-        {"hecho": "sintoma_fruto", "valor": "pequenos_deformes"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Escarabajos de la raíz"
@@ -453,11 +390,7 @@
       "id": "R31",
       "nombre": "Xanthomonas fragariae (Mancha angular de la hoja)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "manchas_transludicas"},
-=======
-        {"hecho": "sintoma_lesion", "valor": "pequenas"},
->>>>>>> origin/main
         {"hecho": "sintoma_caliz", "valor": "marron"}
       ],
       "conclusion": {
@@ -468,11 +401,7 @@
       "id": "R32",
       "nombre": "Rhodococcus fascians (Fasciación)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_fruto", "valor": "deformes"},
-=======
-        {"hecho": "sintoma_fresa", "valor": "malformada"},
->>>>>>> origin/main
         {"hecho": "sintoma_hoja", "valor": "islas_verdes"}
       ],
       "conclusion": {
@@ -484,13 +413,8 @@
       "nombre": "Pseudomonas syringae (Tizón bacterial)",
       "condiciones": [
         {"hecho": "sintoma_corona", "valor": "lesiones"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "marchitez_general"},
         {"hecho": "sintoma_planta", "valor": "decoloracion_interna"}
-=======
-        {"hecho": "sintoma_planta", "valor": "marchitamiento"},
-        {"hecho": "sintoma_interno", "valor": "decoloracion_interna"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Pseudomonas syringae (Tizón bacterial)"
@@ -501,11 +425,7 @@
       "nombre": "Frankliniella occidentalis (Thrips occidental de las flores)",
       "condiciones": [
         {"hecho": "sintoma_flor", "valor": "danos_base"},
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "manchas_pardas"}
-=======
-        {"hecho": "sintoma_general", "valor": "manchas_pardas"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Frankliniella occidentalis (Thrips occidental de las flores)"
@@ -515,14 +435,8 @@
       "id": "R35",
       "nombre": "Geotrichum candidum (Pudrición agria)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_planta", "valor": "olor_agrio"},
         {"hecho": "sintoma_hoja", "valor": "manchas_blancas"}
-=======
-        {"hecho": "sintoma_general", "valor": "olor_agrio"},
-        {"hecho": "sintoma_superficie", "valor": "blanco"},
-        {"hecho": "sintoma_pudricion", "valor": "empapada"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Geotrichum candidum (Pudrición agria)"
@@ -533,11 +447,7 @@
       "nombre": "Neopestalotiopsis (Mancha foliar y pudrición de la fruta)",
       "condiciones": [
         {"hecho": "sintoma_hoja", "valor": "manchas_marron"},
-<<<<<<< HEAD
         {"hecho": "sintoma_fruto", "valor": "podrido"}
-=======
-        {"hecho": "sintoma_fruto", "valor": "pudricion_negro"}
->>>>>>> origin/main
       ],
       "conclusion": {
         "diagnostico": "Neopestalotiopsis (Mancha foliar y pudrición de la fruta)"
@@ -547,11 +457,7 @@
       "id": "R37",
       "nombre": "Ramularia tulasnei (Mancha foliar blanca)",
       "condiciones": [
-<<<<<<< HEAD
         {"hecho": "sintoma_hoja", "valor": "manchas_purpura"},
-=======
-        {"hecho": "sintoma_hoja", "valor": "manchas_circulares_purpura"},
->>>>>>> origin/main
         {"hecho": "sintoma_hoja", "valor": "centro_blanco"}
       ],
       "conclusion": {
