@@ -32,8 +32,10 @@ def busqueda_valida():
     # Obtener la base de conocimiento
     base_conocimiento = lib.obtener_base.obtener_base()
     
+    
     # Iniciar la busqueda
     resultados = motores.retornar_concordancias.iniciar_busqueda(sintomas_prueba, base_conocimiento)
+    print(resultados)
 
     assert len(resultados) == 1
 
