@@ -53,7 +53,7 @@
         {"hecho": "sintoma_estolon", "valor": "muerto"},
         {"hecho": "sintoma_raiz", "valor": "podrida"},
         {"hecho": "sintoma_peciolo", "valor": "manchas_negras"},
-        {"hecho": "sintoma_base_hoja", "valor": "lesiones"},
+        {"hecho": "sintoma_hoja", "valor": "manchas_negras"},
         {"hecho": "sintoma_corona", "valor": "podrida"},
         {"hecho": "sintoma_fruto", "valor": "podrido"},
         {"hecho": "sintoma_hoja", "valor": "marchita"}
