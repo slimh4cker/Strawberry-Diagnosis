@@ -15,7 +15,7 @@ def agrupar_sintomas(base_conocimiento):
             valor = cond.get("valor")
             if hecho is None or valor is None:
                 continue
-            # mantenemos la forma completa (ej. "sintoma_hoja") como clave en  la plantilla
+           #("sintoma_hoja") como clave en  la plantilla
             if hecho not in sintomas_ag:
                 sintomas_ag[hecho] = set()
             sintomas_ag[hecho].add(valor)
@@ -26,7 +26,6 @@ def agrupar_sintomas(base_conocimiento):
 def index():
     base = obtener_base()
     sintomas = agrupar_sintomas(base)
-    # imprime cantidad de reglas y algunas claves
     print(f"[DEBUG] Base cargada: {len(base)} reglas. Categorías de síntomas: {list(sintomas.keys())[:10]}")
     return render_template("index.html", sintomas=sintomas)
 
@@ -51,10 +50,9 @@ def diagnosticar():
 
         # Si el motor devuelve coincidencias
         if resultados:
-            mejor = resultados[0]  # tomamos la primera (mayor coincidencia)
+            mejor = resultados[0]  
             diagnostico = mejor.get("conclusion", {}).get("diagnostico", mejor.get("nombre", "Desconocido"))
 
-            # construimos una descripción más detallada si existe
             descripcion = mejor.get("descripcion", "")
             condiciones = [f"{c['hecho'].replace('sintoma_', '').capitalize()}: {c['valor'].replace('_', ' ')}"
                            for c in mejor.get("condiciones", [])]
@@ -73,11 +71,11 @@ def diagnosticar():
             return jsonify({"resultado": resultado_html})
 
         # Si no hubo coincidencias
-        return jsonify({"resultado": "❌ No se puede diagnosticar en este momento."})
+        return jsonify({"resultado": "No se puede diagnosticar en este momento."})
 
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"resultado": f"⚠️ Error interno: {str(e)}"})
+        return jsonify({"resultado": f"Error interno: {str(e)}"})
 
 
 if __name__ == "__main__":
