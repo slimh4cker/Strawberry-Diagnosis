@@ -3,37 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arbusto de Fresa Interactivo (SVG)</title>
+  <title>Arbusto de Fresa Interactivo</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
       text-align: center;
     }
+
     .container {
       position: relative;
       display: inline-block;
     }
+
     img {
+      width: 900px;
+      height: 582px;
       display: block;
-      width: 355px;
-      height: 437px;
     }
+
     svg {
       position: absolute;
       top: 0;
       left: 0;
-      width: 355px;
-      height: 437px;
+      width: 900px;
+      height: 582px;
     }
+
     .parte {
       fill: rgba(255, 0, 0, 0);
       cursor: pointer;
       transition: fill 0.2s;
     }
+
     .parte:hover {
       fill: rgba(255, 0, 0, 0.25);
     }
+
     #form-sintoma {
       display: none;
       margin-top: 20px;
@@ -45,14 +52,14 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     #form-sintoma input {
       width: 100%;
       padding: 5px;
       margin-top: 5px;
       margin-bottom: 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
     }
+
     #form-sintoma button {
       padding: 6px 12px;
       border-radius: 4px;
@@ -61,41 +68,57 @@
       color: white;
       cursor: pointer;
     }
-    #form-sintoma button:hover {
-      background-color: #45a049;
-    }
   </style>
 </head>
+
 <body>
 
-<h2>Arbusto de Fresa Interactivo</h2>
+<h2>Arbusto de Fresa Interactivo — Tamaño Real</h2>
 
 <div class="container">
-  <img src="arbusto.png" alt="Arbusto de fresa">
-  
-  <svg viewBox="0 0 355 437">
-    <!-- Flor -->
-    <circle class="parte" data-parte="Flor" cx="120" cy="70" r="35"/>
-    <!-- Fruto (ajustado) -->
-    <circle class="parte" data-parte="Fruto" cx="215" cy="60" r="50"/>
-    <!-- Yema -->
-    <circle class="parte" data-parte="Yema" cx="230" cy="130" r="20"/>
-    <!-- Hoja arriba -->
-    <circle class="parte" data-parte="Hoja" cx="145" cy="165" r="30"/>
-    <!-- Hoja en medio -->
-    <circle class="parte" data-parte="Hoja" cx="210" cy="200" r="40"/>
-    <!-- Hoja abajo -->
-    <circle class="parte" data-parte="Hoja" cx="110" cy="285" r="40"/>
-    <!-- Tallo -->
-    <rect class="parte" data-parte="Tallo" x="179" y="113" width="18" height="235"/>
-    <!-- Raíz -->
-    <rect class="parte" data-parte="Raíz" x="130" y="350" width="105" height="90"/>
+  <img src="{{ url_for('static', filename='img/partes.png') }}"
+
+  <svg viewBox="0 0 900 582">
+
+    <!-- FLOR -->
+    <circle class="parte" data-parte="Flor" cx="455" cy="75" r="25"/>
+
+    <!-- BOTÓN -->
+    <circle class="parte" data-parte="Botón" cx="420" cy="70" r="10"/>
+
+    <!-- PEDUNCULO -->
+    <circle class="parte" data-parte="Pedúnculo" cx="525" cy="180" r="10"/>
+
+    <!-- PECIOLO -->
+    <rect class="parte" data-parte="Peciolo" x="300" y="160" width="35" height="140"/>
+
+    <!-- HOJAS -->
+    <circle class="parte" data-parte="Hoja" cx="330" cy="200" r="70"/>
+    <circle class="parte" data-parte="Hoja" cx="460" cy="270" r="80"/>
+    <circle class="parte" data-parte="Hoja" cx="360" cy="360" r="70"/>
+
+    <!-- FRUTOS -->
+    <circle class="parte" data-parte="Pedúnculo" cx="525" cy="180" r="10"/>
+    <circle class="parte" data-parte="Fruto" cx="610" cy="230" r="50"/>
+
+    <!-- TALLO -->
+    <rect class="parte" data-parte="Tallo" x="430" y="180" width="40" height="270"/>
+
+    <!-- ESTOLÓN -->
+    <rect class="parte" data-parte="Estolón" x="520" y="330" width="250" height="35"/>
+
+    <!-- CORONA -->
+    <circle class="parte" data-parte="Corona" cx="440" cy="410" r="55"/>
+
+    <!-- RAÍZ -->
+    <rect class="parte" data-parte="Raíz" x="350" y="430" width="250" height="150"/>
+
   </svg>
 </div>
 
 <div id="form-sintoma">
   <h3 id="parte-seleccionada">Parte:</h3>
-  <label for="sintoma">Síntoma:</label>
+  <label>Síntoma:</label>
   <input type="text" id="sintoma" placeholder="Describe el síntoma">
   <button id="guardar">Guardar</button>
 </div>
@@ -119,10 +142,10 @@
   document.getElementById("guardar").addEventListener("click", () => {
     const sintoma = inputSintoma.value.trim();
     if (sintoma) {
-      alert(`✅ Síntoma registrado para ${parteSeleccionada.textContent.split(": ")[1]}: ${sintoma}`);
+      alert(`✔️ Síntoma registrado para ${parteSeleccionada.textContent.split(": ")[1]}: ${sintoma}`);
       form.style.display = "none";
     } else {
-      alert("Por favor, ingresa un síntoma.");
+      alert("Por favor, escribe un síntoma.");
     }
   });
 </script>

@@ -29,3 +29,33 @@ body {
 #sintomas-seleccionados {
     min-height: 40px;
 }
+
+/* Para la seleccion de partes de la planta */
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+img {
+    width: 900px;
+    height: 582px;
+    display: block;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 900px;
+    height: 582px;
+}
+
+.parte {
+    fill: rgba(255, 0, 0, 0);
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+.parte:hover {
+    fill: rgba(255, 0, 0, 0.25);
+}
