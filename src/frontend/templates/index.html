@@ -2,64 +2,126 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema Experto de Fresas 🍓</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Sistema Experto – Diagnóstico de Fresas</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body class="bg-light">
-    <div class="container py-4">
-        <div class="text-center mb-4">
-            <h1 class="titulo-principal">🍓 Sistema Experto - Diagnóstico de Enfermedades en Fresas</h1>
-            <p class="text-muted">Selecciona los síntomas observados para obtener un posible diagnóstico.</p>
+
+<div class="container py-4">
+
+    <h2 class="text-center fw-bold mb-4 text-success">
+        Sistema Experto para Diagnóstico de Fresas
+    </h2>
+
+    <!-- GRID -->
+    <div class="row g-4">
+
+        <!-- LA IMAGEN -->
+        <div class="col-md-6 text-center">
+            <div class="card shadow-sm p-3">
+                <h5 class="fw-semibold mb-3">Partes de la planta</h5>
+
+                <img src="{{ url_for('static', filename='img/partes.png') }}"
+                     alt="Partes de la planta de fresa"
+                     class="img-fluid rounded border">
+            </div>
         </div>
 
-        <form id="formulario" class="card shadow-sm p-4 border-0 rounded-4">
-            {% for categoria, valores in sintomas.items() %}
-                <div class="categoria mb-4">
-                    <h4 class="fw-semibold text-danger mb-3">
-                        {{ categoria.replace('sintoma_', '').capitalize() }}
-                    </h4>
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-                        {% for valor in valores %}
-                            <div class="form-check ms-2">
-                                <input class="form-check-input" type="checkbox" name="sintomas" value="{{ categoria }}:{{ valor }}">
-                                <label class="form-check-label text-capitalize">{{ valor.replace('_', ' ') }}</label>
-                            </div>
-                        {% endfor %}
-                    </div>
+        <!-- SÍNTOMAS DE LA PARTE SELECCIONADA -->
+        <div class="col-md-6">
+            <div class="card shadow-sm p-3">
+                <h5 class="fw-semibold mb-3">Síntomas (según la parte seleccionada)</h5>
+
+                <div id="lista-sintomas" class="text-muted">
+                    Selecciona una parte de la planta para ver los síntomas disponibles.
                 </div>
-            {% endfor %}
-
-            <div class="text-center mt-4">
-                <button type="button" class="btn btn-danger btn-lg px-5" id="btnDiagnosticar">Diagnosticar</button>
             </div>
-        </form>
+        </div>
 
-        <div id="resultado" class="resultado mt-4 text-center fw-semibold"></div>
     </div>
 
-    <script>
-    document.getElementById("btnDiagnosticar").addEventListener("click", async () => {
-        const seleccionados = Array.from(document.querySelectorAll('input[name="sintomas"]:checked'))
-            .map(cb => cb.value);
+    <!-- SÍNTOMAS SELECCIONADOS -->
+    <div class="card shadow-sm p-3 mt-4">
+        <h5 class="fw-semibold">Síntomas seleccionados</h5>
+        <div id="sintomas-seleccionados" class="mt-2 text-secondary">
+            <span class="text-muted">Ninguno aún</span>
+        </div>
+    </div>
 
-        const resultado = document.getElementById("resultado");
-        resultado.innerHTML = ""; // limpia antes de mostrar algo nuevo
+    <!-- BOTÓN -->
+    <div class="text-center mt-4">
+        <button id="btn-diagnosticar" class="btn btn-success btn-lg px-4 shadow">
+            🩺 Diagnosticar
+        </button>
+    </div>
 
-        if (seleccionados.length === 0) {
-            resultado.innerHTML = "<div class='alert alert-warning mt-3'>⚠️ Por favor selecciona al menos un síntoma.</div>";
-            return;
-        }
+    <!-- RESULTADO -->
+    <div id="resultado" class="mt-4 text-center"></div>
 
-        const respuesta = await fetch("/diagnosticar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ sintomas: seleccionados })
+</div>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const sintomasSeleccionadosDiv = document.getElementById("sintomas-seleccionados");
+    const listaSintomasDiv = document.getElementById("lista-sintomas");
+
+    // Cuando el usuario seleccione una parte (falta que se conecte este evento desde la imagen que hizo andres)
+    function mostrarSintomasDe(parte, sintomas) {
+        listaSintomasDiv.innerHTML = "";
+
+        sintomas.forEach(s => {
+            const id = parte + "_" + s;
+            listaSintomasDiv.innerHTML += `
+                <div class="form-check">
+                    <input class="form-check-input sintoma-check"
+                        type="checkbox"
+                        value="${parte}:${s}"
+                        id="${id}">
+                    <label class="form-check-label" for="${id}">
+                        ${s.replace('_',' ')}
+                    </label>
+                </div>`;
         });
 
-        const data = await respuesta.json();
-        resultado.innerHTML = `<div class='alert alert-light border mt-3 p-3 shadow-sm'>${data.resultado}</div>`;
-    });
+        actualizarEventosCheckbox();
+    }
+
+    // Actualiza la lista de síntomas seleccionados
+    function actualizarEventosCheckbox() {
+        document.querySelectorAll(".sintoma-check").forEach(chk => {
+            chk.addEventListener("change", () => {
+                const seleccionados = [...document.querySelectorAll(".sintoma-check:checked")]
+                    .map(c => c.value.replace("sintoma_", "").replace("_", " "));
+
+                sintomasSeleccionadosDiv.innerHTML =
+                    seleccionados.length
+                        ? "• " + seleccionados.join("<br>• ")
+                        : "<span class='text-muted'>Ninguno aún</span>";
+            });
+        });
+    }
+
+    // Botón diagnosticar
+    document.getElementById("btn-diagnosticar").onclick = () => {
+        const seleccionados = [...document.querySelectorAll(".sintoma-check:checked")]
+            .map(c => c.value);
+
+        fetch("/diagnosticar", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ sintomas: seleccionados })
+        })
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById("resultado").innerHTML = data.resultado;
+        });
+    };
 </script>
 
 </body>

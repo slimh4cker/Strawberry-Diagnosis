@@ -1,67 +1,31 @@
-/* =====================
-   ESTILOS GENERALES
-===================== */
 body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background-color: #fffafc;
-    color: #333;
+    background: #f7f7f7;
 }
 
-.titulo-principal {
-    color: #b22222;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+.card {
+    border-radius: 12px;
 }
 
-/* =====================
-   TARJETAS DE CATEGORÍA
-===================== */
-.categoria {
-    background-color: #fff;
-    border: 1px solid #f3dcdc;
-    border-radius: 15px;
-    padding: 20px;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.categoria:hover {
-    box-shadow: 0 4px 15px rgba(242, 90, 90, 0.15);
-}
-
-/* =====================
-   BOTÓN PRINCIPAL
-===================== */
-.btn-danger {
-    background-color: #d63031;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn-danger:hover {
-    background-color: #b71c1c;
-}
-
-/* =====================
-   RESULTADOS
-===================== */
-.resultado {
+#btn-diagnosticar {
+    border-radius: 12px;
     font-size: 1.1rem;
-    color: #2c3e50;
+    font-weight: 600;
 }
 
-.alert {
-    font-size: 1rem;
-    border-radius: 10px;
+#sintomas-lista, #sintomas-seleccionados {
+    border: 2px solid #e3e3e3;
+    border-radius: 12px;
+    transition: 0.3s;
 }
 
-/* =====================
-   SCROLL PERSONALIZADO
-===================== */
-::-webkit-scrollbar {
-    width: 8px;
+#sintomas-lista:hover, #sintomas-seleccionados:hover {
+    border-color: #b8b8b8;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #f28b82;
-    border-radius: 10px;
+#resultado {
+    font-size: 1.1rem;
+}
+
+#sintomas-seleccionados {
+    min-height: 40px;
 }
