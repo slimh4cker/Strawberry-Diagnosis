@@ -20,18 +20,44 @@
     <!-- GRID -->
     <div class="row g-4">
 
-        <!-- LA IMAGEN -->
+        <!-- IMAGEN + SVG -->
         <div class="col-md-6 text-center">
             <div class="card shadow-sm p-3">
                 <h5 class="fw-semibold mb-3">Partes de la planta</h5>
 
-                <img src="{{ url_for('static', filename='img/partes.png') }}"
-                     alt="Partes de la planta de fresa"
-                     class="img-fluid rounded border">
+                <div class="svg-container">
+                    <img id="img-base" src="{{ url_for('static', filename='img/partes.png') }}" class="img-fluid rounded border">
+
+                    <svg id="svg-overlay" class="svg-overlay" viewBox="0 0 900 582">
+
+                        <circle class="parte" data-parte="Flor" cx="455" cy="75" r="25"/>
+                        <circle class="parte" data-parte="Botón" cx="420" cy="70" r="10"/>
+                        <circle class="parte" data-parte="Pedúnculo" cx="525" cy="180" r="10"/>
+
+                        <rect class="parte" data-parte="Peciolo" x="300" y="160" width="35" height="140"/>
+
+                        <circle class="parte" data-parte="Hoja" cx="330" cy="200" r="70"/>
+                        <circle class="parte" data-parte="Hoja" cx="460" cy="270" r="80"/>
+                        <circle class="parte" data-parte="Hoja" cx="360" cy="360" r="70"/>
+
+                        <circle class="parte" data-parte="Fruto" cx="610" cy="230" r="50"/>
+
+                        <rect class="parte" data-parte="Tallo" x="430" y="180" width="40" height="270"/>
+
+                        <rect class="parte" data-parte="Estolón" x="520" y="330" width="250" height="35"/>
+
+                        <circle class="parte" data-parte="Corona" cx="440" cy="410" r="55"/>
+
+                        <rect class="parte" data-parte="Raíz" x="350" y="430" width="250" height="150"/>
+
+                    </svg>
+
+                </div>
+
             </div>
         </div>
 
-        <!-- SÍNTOMAS DE LA PARTE SELECCIONADA -->
+        <!-- LISTA DE SÍNTOMAS -->
         <div class="col-md-6">
             <div class="card shadow-sm p-3">
                 <h5 class="fw-semibold mb-3">Síntomas (según la parte seleccionada)</h5>
@@ -59,70 +85,14 @@
         </button>
     </div>
 
-    <!-- RESULTADO -->
     <div id="resultado" class="mt-4 text-center"></div>
 
 </div>
 
-<!-- BOOTSTRAP JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    const sintomasSeleccionadosDiv = document.getElementById("sintomas-seleccionados");
-    const listaSintomasDiv = document.getElementById("lista-sintomas");
-
-    // Cuando el usuario seleccione una parte (falta que se conecte este evento desde la imagen que hizo andres)
-    function mostrarSintomasDe(parte, sintomas) {
-        listaSintomasDiv.innerHTML = "";
-
-        sintomas.forEach(s => {
-            const id = parte + "_" + s;
-            listaSintomasDiv.innerHTML += `
-                <div class="form-check">
-                    <input class="form-check-input sintoma-check"
-                        type="checkbox"
-                        value="${parte}:${s}"
-                        id="${id}">
-                    <label class="form-check-label" for="${id}">
-                        ${s.replace('_',' ')}
-                    </label>
-                </div>`;
-        });
-
-        actualizarEventosCheckbox();
-    }
-
-    // Actualiza la lista de síntomas seleccionados
-    function actualizarEventosCheckbox() {
-        document.querySelectorAll(".sintoma-check").forEach(chk => {
-            chk.addEventListener("change", () => {
-                const seleccionados = [...document.querySelectorAll(".sintoma-check:checked")]
-                    .map(c => c.value.replace("sintoma_", "").replace("_", " "));
-
-                sintomasSeleccionadosDiv.innerHTML =
-                    seleccionados.length
-                        ? "• " + seleccionados.join("<br>• ")
-                        : "<span class='text-muted'>Ninguno aún</span>";
-            });
-        });
-    }
-
-    // Botón diagnosticar
-    document.getElementById("btn-diagnosticar").onclick = () => {
-        const seleccionados = [...document.querySelectorAll(".sintoma-check:checked")]
-            .map(c => c.value);
-
-        fetch("/diagnosticar", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ sintomas: seleccionados })
-        })
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById("resultado").innerHTML = data.resultado;
-        });
-    };
-</script>
+<!-- 🔥 Script externo -->
+<script src="{{ url_for('static', filename='selector.js') }}"></script>
 
 </body>
 </html>
