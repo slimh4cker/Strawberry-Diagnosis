@@ -82,3 +82,21 @@ document.getElementById("btn-diagnosticar").onclick = () => {
             document.getElementById("resultado").innerHTML = data.resultado;
         });
 };
+
+document.querySelectorAll(".parte").forEach(elemento => {
+    elemento.addEventListener("click", () => {
+        const parte = elemento.getAttribute("data-parte");
+
+        // Mostrar el nombre seleccionado (solo para pruebas)
+        let box = document.getElementById("parte-seleccionada-temp");
+
+        if (!box) {
+            box = document.createElement("div");
+            box.id = "parte-seleccionada-temp";
+            box.className = "alert alert-info mt-3 text-center fw-bold";
+            document.querySelector(".svg-container").appendChild(box);
+        }
+
+        box.textContent = "Parte seleccionada: " + parte;
+    });
+});
