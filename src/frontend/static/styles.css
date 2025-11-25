@@ -12,13 +12,15 @@ body {
     font-weight: 600;
 }
 
-#sintomas-lista, #sintomas-seleccionados {
+#sintomas-lista,
+#sintomas-seleccionados {
     border: 2px solid #e3e3e3;
     border-radius: 12px;
     transition: 0.3s;
 }
 
-#sintomas-lista:hover, #sintomas-seleccionados:hover {
+#sintomas-lista:hover,
+#sintomas-seleccionados:hover {
     border-color: #b8b8b8;
 }
 
@@ -30,24 +32,25 @@ body {
     min-height: 40px;
 }
 
-/* Para la seleccion de partes de la planta */
-.container {
+.svg-container {
     position: relative;
     display: inline-block;
+    width: 100%;
 }
 
-img {
-    width: 900px;
-    height: 582px;
+#img-base {
+    width: 100%;
+    height: auto;
     display: block;
 }
 
-svg {
+.svg-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 900px;
-    height: 582px;
+    width: 100%;      /* escala en proporción a la imagen */
+    height: 100%;     /* escala en proporción a la imagen */
+    pointer-events: auto;
 }
 
 .parte {
@@ -57,5 +60,5 @@ svg {
 }
 
 .parte:hover {
-    fill: rgba(255, 0, 0, 0.25);
+    fill: rgba(107, 0, 247, 0.25);
 }
