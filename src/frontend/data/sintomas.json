@@ -1,0 +1,126 @@
+{
+  "sintoma_hoja": [
+    "danada",
+    "cubierta_gris",
+    "marchita",
+    "manchas_negras",
+    "manchas_purpuras",
+    "manchas_transludicas",
+    "manchas_blancas",
+    "manchas_marron",
+    "color_amarillo_rojizo",
+    "centros_grisaceos_blanquecinos",
+    "bordes_oscuros_definidos",
+    "enrollamiento_limites",
+    "puntos_negros",
+    "halo_amarillo",
+    "arrugadas",
+    "pegajosas",
+    "secas",
+    "agujeros_grandes",
+    "telaranas_muy_pequenas",
+    "amarillentas",
+    "mordidas",
+    "mordidas_agujeros",
+    "agujeros_irregulares",
+    "enrolladas_torcidas",
+    "mordidos_maltratados_pelos",
+    "islas_verdes",
+    "centro_blanco",
+    "deformadas_arrugadas"
+  ],
+  "sintoma_corona": [
+    "manchas_oscuras",
+    "podrida",
+    "descolorida",
+    "lesiones"
+  ],
+  "sintoma_estolon": [
+    "muerto"
+  ],
+  "sintoma_peciolo": [
+    "lesiones_oscuras",
+    "marchito"
+  ],
+  "sintoma_tallo": [
+    "marchito"
+  ],
+  "sintoma_boton": [
+    "seco_caido",
+    "perforado"
+  ],
+  "sintoma_flor": [
+    "danos_base"
+  ],
+  "sintoma_fruto": [
+    "manchas_cafe",
+    "mordidas",
+    "zonas_acuosas",
+    "morado_oscuro",
+    "moho_blanco_humedo",
+    "moho_negro",
+    "descomposicion_rapida_tejido",
+    "olor_fermentacion_moho",
+    "perdida_total_firmeza",
+    "podrido",
+    "agarre_flojo",
+    "lesiones",
+    "manchas_circulares_marron",
+    "centros_necroticos_rosada",
+    "opacos",
+    "manchas_negras",
+    "manchas_blandas",
+    "goteo_liquido_rojo",
+    "cubierta_blanca_negra",
+    "masas_largas_micelio",
+    "perdida_agua",
+    "escasos",
+    "danados",
+    "deformes",
+    "agujeros_profundos",
+    "mordidos_maltratados_pelos",
+    "rayas_plateadas",
+    "deformados_piel_fea"
+  ],
+  "sintoma_pedunculo": [
+    "color_cafe"
+  ],
+  "sintoma_raiz": [
+    "podrida_negra",
+    "corteza_desprendible",
+    "podrida",
+    "blanca",
+    "dano",
+    "estela_central_roja"
+  ],
+  "sintoma_planta": [
+    "chiquita",
+    "olor_feo",
+    "marchitez_general",
+    "muerte",
+    "debilitada",
+    "crecimiento_lento",
+    "cortadas_ras_suelo",
+    "baba_brillante",
+    "crecimiento_detenido",
+    "insecto_debajo_plantas_dia",
+    "oruga_pelos_verde_marron_negro",
+    "decoloracion_interna",
+    "manchas_pardas",
+    "olor_agrio"
+  ],
+  "presencia_insecto": [
+    "pequenos_insectos_tallo",
+    "hormigas_alrededor",
+    "moscas_blancas_pequenas_alrededor",
+    "gusanos_gordos_tierra",
+    "gusanos_verdes_pequenos",
+    "larvas_movimiento_u",
+    "polilla_color_cafe",
+    "gusanos_cabeza_dura_cafe",
+    "tijerillas_dentro_fruto",
+    "ciempes_en_cerca_planta",
+    "larvas_verdes_amarillas_cabeza_marron_fruta",
+    "chinches_verde_rojo_naranja"
+  ]
+}
