@@ -19,7 +19,8 @@ def flatten_dict_lists(data: Dict[Any, Any]) -> List[Any]:
 
 def obtener_base() -> List[Any]:
     """Lee el archivo de base de conocimiento y lo convierte en una lista de Python."""
-    base_path = Path(__file__).resolve().parents[1] / "base_conocimiento.json"
+    base_path = Path(__file__).resolve().parents[1] / "data/base_conocimiento.json"
+    print(base_path)
 
     try:
         text = base_path.read_text(encoding="utf-8")
