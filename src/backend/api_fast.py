@@ -4,6 +4,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Dict, Any
 from fastapi.middleware.cors import CORSMiddleware
+import logging # Registro de logs en terminal
+from collections import Counter # Para contar sintomas repetidos
+
+logger = logging.getLogger("uvicorn.error")
+logger.setLevel(logging.DEBUG)
 
 # Importamos tus funciones del proyecto
 from lib.obtener_base import obtener_base
@@ -35,10 +40,13 @@ class Payload(BaseModel):
 def diagnostico(payload: Payload):
 
     lista_sintomas = [s.model_dump() for s in payload.data]
-
+    counter = Counter((s['hecho'], s['valor']) for s in lista_sintomas) # se cuenta cada clave, valor
+    if any(count > 1 for count in counter.values()): # si alguna clave, valor se repite
+        return {"resultado": "Hay síntomas repetidos en la selección."}
+    
     if len(lista_sintomas) < 2:
         return {"resultado": "⚠️ Selecciona mas síntomas."}
-
+    
     base = obtener_base()
     resultados = motor.iniciar_busqueda(lista_sintomas, base)
 
