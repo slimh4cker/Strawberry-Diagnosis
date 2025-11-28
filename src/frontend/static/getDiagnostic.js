@@ -38,9 +38,9 @@ const diagnostic = [
 // Tienes que usar .then() o estar dentro de otra función async para ver el resultado.
 
 // Opción A: Usando .then (estilo clásico)
-post_diagnostic(diagnostic).then(resultado => {
-    console.log("Resultado final:", resultado);
-});
+//post_diagnostic(diagnostic).then(resultado => {
+//    console.log("Resultado final:", resultado);
+//});
 
 
 // funcion que retorna 
@@ -68,3 +68,6 @@ async function get_dummy() {
 		'nombre': 'Gusano soldado de la remolacha'}
     ]
 }
+
+export { get_dummy, post_diagnostic };
+

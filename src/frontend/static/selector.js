@@ -67,21 +67,7 @@ function actualizarEventosCheckbox() {
     });
 }
 
-// Diagnóstico
-document.getElementById("btn-diagnosticar").onclick = () => {
-    const seleccionados = [...document.querySelectorAll(".sintoma-check:checked")]
-        .map(c => c.value);
 
-    fetch("/diagnosticar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sintomas: seleccionados })
-    })
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById("resultado").innerHTML = data.resultado;
-        });
-};
 
 document.querySelectorAll(".parte").forEach(elemento => {
     elemento.addEventListener("click", () => {
