@@ -41,3 +41,30 @@ const diagnostic = [
 post_diagnostic(diagnostic).then(resultado => {
     console.log("Resultado final:", resultado);
 });
+
+
+// funcion que retorna 
+async function get_dummy() {
+ return [
+	{'conclusion': 
+		{'diagnostico': 'Picudo de la fresa'},
+		'condiciones': 
+		[
+			{'hecho': 'sintoma_boton', 'valor': 'seco_caido'},
+			{'hecho': 'sintoma_boton', 'valor': 'perforado'},
+			{'hecho': 'sintoma_fruto', 'valor': 'escasos'}
+		],
+		'id': 'R20',
+		'nombre': 'Picudo de la fresa'},
+		
+	{'conclusion': {'diagnostico': 'Gusano soldado de la remolacha'},
+		'condiciones': 
+		[
+			{'hecho': 'sintoma_hoja', 'valor': 'mordidas_agujeros'},
+			{'hecho': 'sintoma_fruto', 'valor': 'danados'},
+			{'hecho': 'presencia_insecto', 'valor': 'gusanos_verdes_pequenos'}
+		],
+		'id': 'R21',
+		'nombre': 'Gusano soldado de la remolacha'}
+    ]
+}
