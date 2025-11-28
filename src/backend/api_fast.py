@@ -1,4 +1,4 @@
-#Este archivo es el que levanta FastApi (logica del BackEnd)
+# Este archivo es el que levanta FastApi (logica del BackEnd)
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -31,44 +31,33 @@ class Payload(BaseModel):
 
 
 # ------------------- ENDPOINT PRINCIPAL -------------------
+
 @app.post("/api/diagnostico")
 def diagnostico(payload: Payload):
 
     lista_sintomas = [s.model_dump() for s in payload.data]
 
     if len(lista_sintomas) < 2:
-        return {"resultado": "⚠️ Selecciona mas síntomas."}
+        return {"error": "⚠️ Selecciona mas sintomas."}
 
     base = obtener_base()
     resultados = motor.iniciar_busqueda(lista_sintomas, base)
 
     if resultados:
-        mejor = resultados[0]
+        # Para devolver todos los resultados como lista
+        # limpiamos o formateamos cada resultado si quieres,
+        # o solo devuelve tal cual vienen del motor
+        response = []
+        for r in resultados:
+            item = {
+                "id": r.get("id", ""),
+                "nombre": r.get("nombre", ""),
+                "conclusion": r.get("conclusion", {}),
+                "condiciones": r.get("condiciones", [])
+            }
+            response.append(item)
 
-        diagnostico = (
-            mejor.get("conclusion", {}).get("diagnostico")
-            or mejor.get("nombre")
-            or "Desconocido"
-        )
+        return response
 
-        descripcion = mejor.get("descripcion", "")
-        condiciones = [
-            f"{c['hecho'].replace('sintoma_', '').capitalize()}: "
-            f"{c['valor'].replace('_', ' ')}"
-            for c in mejor.get("condiciones", [])
-        ]
+    return {"error": "No se puede diagnosticar con los datos actuales."}
 
-        condiciones_html = "<br>".join(f"• {c}" for c in condiciones)
-
-        html = f"""
-            <h4 class='text-success'>🩺 {diagnostico}</h4>
-            {'<p class="text-muted">' + descripcion + '</p>' if descripcion else ''}
-            <div class='text-start mx-auto mt-2' style='max-width:600px'>
-                <p class='fw-semibold'>Sintomas característicos:</p>
-                <p>{condiciones_html}</p>
-            </div>
-        """
-
-        return {"resultado": html}
-
-    return {"resultado": "No se puede diagnosticar con los datos actuales."}
