@@ -89,7 +89,7 @@ document.querySelectorAll(".parte").forEach(elemento => {
 // Función para obtener síntomas según la parte seleccionada
 // clave es el identificador de la parte segun el json
 async function obtenerSintomasParaParte(clave) {
-  fetch('/static/data/sintomas.json')
+  return fetch('/static/data/sintomas.json')
     .then(res => res.json())
     .then(data => {
     console.log(data[clave]);
