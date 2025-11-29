@@ -20,15 +20,14 @@ window.addEventListener("load", () => {
 document.querySelectorAll(".parte").forEach(elem => {
     elem.addEventListener("click", () => {
         const parte = elem.dataset.parte;
+        const clave = elem.dataset.clave;
 
-        // Solicita los síntomas desde Flask según la parte
-        fetch(`/sintomas/${parte}`)
-            .then(r => r.json())
-            .then(data => {
-                mostrarSintomasDe(parte, data.sintomas);
-            });
+        obtenerSintomasParaParte(clave).then(sintomas => {
+            //mostrarSintomasDe(parte, sintomas);
+        });
     });
 });
+
 
 // Mostrar lista de síntomas según la parte
 function mostrarSintomasDe(parte, sintomas) {
@@ -86,3 +85,14 @@ document.querySelectorAll(".parte").forEach(elemento => {
         box.textContent = "Parte seleccionada: " + parte;
     });
 });
+
+// Función para obtener síntomas según la parte seleccionada
+// clave es el identificador de la parte segun el json
+async function obtenerSintomasParaParte(clave) {
+  fetch('/static/data/sintomas.json')
+    .then(res => res.json())
+    .then(data => {
+    console.log(data[clave]);
+    return data[clave] || data;
+  });
+}
