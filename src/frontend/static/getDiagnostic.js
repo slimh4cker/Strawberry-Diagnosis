@@ -15,7 +15,7 @@ async function post_diagnostic(data) {
         // 3. Esperamos a que se convierta a JSON
         const responseData = await response.json();
         
-        return responseData.resultado; // Ahora sí retorna el valor
+        return responseData; // Ahora sí retorna el valor
 
     } catch (error) {
         console.error('Error:', error);
