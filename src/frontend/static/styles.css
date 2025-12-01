@@ -62,3 +62,34 @@ body {
 .parte:hover {
     fill: rgba(107, 0, 247, 0.25);
 }
+
+.boton-general {
+    position: absolute;
+    top: 120px;
+    left: 630px;
+    z-index: 30;
+
+    padding: 9px 28px;      /* más alto y más largo */
+    font-size: 1.05rem;      
+    font-weight: 600;
+
+    background-color: #28a745;
+    border: 1px solid #1f7a34;
+    border-radius: 12px;     /* bordes suaves */
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow: none;
+    transition: none;
+}
+
+.boton-general:hover {
+    background-color: #218838;
+}
+
+.boton-general:active {
+    background-color: #1e7e34;
+}
+
+
