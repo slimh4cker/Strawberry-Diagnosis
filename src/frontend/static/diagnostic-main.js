@@ -25,6 +25,8 @@ document.getElementById("btn-diagnosticar").addEventListener("click", async () =
     // luego se cambiara por const data = await post_diagnostic(seleccionados);
 
     processDiagnosticSource(data);    // muestra la tarjeta
+    const resultContainer = document.getElementById("diagnostic-result");
+    resultContainer.classList.add("show");
 });
 
 function mostrarModal(mensaje) {

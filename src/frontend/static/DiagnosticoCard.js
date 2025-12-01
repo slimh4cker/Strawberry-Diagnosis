@@ -25,6 +25,10 @@ export function renderDiagnosticCard(diag) {
         diag?.nombre ||
         "Diagnóstico sin nombre";
 
+    const recomendacion =
+        diag?.conclusion?.recomendacion ||
+        "No hay recomendaciones disponibles.";
+
     const listaCondiciones = diag.condiciones
         .map(c => {
             const hecho = c.hecho.replace("sintoma_", "").replace("_", " ");
@@ -33,29 +37,47 @@ export function renderDiagnosticCard(diag) {
         })
         .join("");
 
-    //Construir tarjeta
     const html = `
-        <div class="card shadow-sm p-3" style="max-width: 600px; margin: auto;">
-            <h4 class="text-success mb-2">🩺 ${titulo}</h4>
+        <div class="diagnostic-header">
+            <span>${titulo}</span>
+            <span class="status-icon">✔</span>
+        </div>
 
-            <p class="fw-semibold mt-3 mb-1">Síntomas característicos:</p>
-            <ul>
-                ${listaCondiciones}
-            </ul>
+        <p class="diagnostic-description">
+            <strong>Síntomas característicos:</strong>
+        </p>
+
+        <ul class="diagnostic-description">
+            ${listaCondiciones}
+        </ul>
+
+        <div class="diagnostic-recommendation">
+            <strong>Recomendación:</strong><br>
+            ${recomendacion}
         </div>
     `;
 
     updateContainer(html);
+
+    // Mostrar con animación
+    document.getElementById("diagnostic-result").classList.add("show");
 }
+
 
 
 export function renderMessage(message) {
     const html = `
-        <div class="card shadow-sm p-3 bg-light" style="max-width: 600px; margin: auto;">
-            <p class="text-center fw-semibold">${message}</p>
+        <div class="diagnostic-header">
+            <span>Mensaje</span>
+            <span class="status-icon warning">⚠</span>
         </div>
+
+        <p class="diagnostic-description text-center">
+            ${message}
+        </p>
     `;
     updateContainer(html);
+    document.getElementById("diagnostic-result").classList.add("show");
 }
 
 export function processDiagnosticSource(data) {
@@ -84,15 +106,21 @@ if (Array.isArray(data) && data.length > 0) {
             .join("");
 
         html += `
-            <div class="card shadow-sm p-3 mb-3" style="max-width: 600px; margin: auto;">
-                <h4 class="text-success mb-2">🩺 ${titulo}</h4>
-                <p class="fw-semibold mt-3 mb-1">Síntomas característicos:</p>
-                <ul>${listaCondiciones}</ul>
+            <div style="margin-bottom: 1.5rem; padding: 1rem; border-radius: 12px; background: #f8f9fa; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <div class="diagnostic-header">
+                    <span>${titulo}</span>
+                    <span class="status-icon">✔</span>
+                </div>
+
+                <p class="diagnostic-description"><strong>Síntomas característicos:</strong></p>
+
+                <ul class="diagnostic-description">${listaCondiciones}</ul>
             </div>
         `;
     }
 
     updateContainer(html);
+    document.getElementById("diagnostic-result").classList.add("show");
     return;
 }
 
