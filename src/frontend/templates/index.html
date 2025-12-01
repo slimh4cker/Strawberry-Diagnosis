@@ -6,6 +6,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
@@ -68,26 +69,28 @@
             </div>
         </div>
 
-        <!-- LISTA DE SÍNTOMAS -->
-        <div class="col-md-6">
-            <div class="card shadow-sm p-3">
-                <h5 class="fw-semibold mb-3">Síntomas (según la parte seleccionada)</h5>
+      <!-- LISTA DE SÍNTOMAS -->
+<div class="col-md-6 col-sintomas">
 
-                <div id="lista-sintomas" class="text-muted">
-                    Selecciona una parte de la planta para ver los síntomas disponibles.
-                </div>
-            </div>
+    <!-- TARJETA DE SÍNTOMAS -->
+    <div class="card shadow-sm p-3 mb-4 card-sintomas-lista">
+        <h5 class="fw-semibold mb-3">Síntomas (según la parte seleccionada)</h5>
+
+        <div id="lista-sintomas" class="text-muted">
+            Selecciona una parte de la planta para ver los síntomas disponibles.
         </div>
-
     </div>
 
-    <!-- SÍNTOMAS SELECCIONADOS -->
-    <div class="card shadow-sm p-3 mt-4">
+    <!-- TARJETA DE SÍNTOMAS SELECCIONADOS -->
+    <div class="card shadow-sm p-3 card-sintomas-seleccionados">
         <h5 class="fw-semibold">Síntomas seleccionados</h5>
         <div id="sintomas-seleccionados" class="mt-2 text-secondary">
             <span class="text-muted">Ninguno aún</span>
         </div>
     </div>
+
+</div>
+
 
     <!-- BOTÓN -->
     <div class="text-center mt-4">
@@ -106,6 +109,21 @@
 <script src="{{ url_for('static', filename='selector.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='diagnostic-main.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='getDiagnostic.js') }}"></script>
+
+<!-- Modal -->
+<div id="modalAlerta" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg modern-modal">
+      <div class="modal-body text-center p-4">
+        <div class="icono-alerta mb-3">⚠️</div>
+        <p id="modalAlertaMensaje" class="mb-0 fs-5"></p>
+      </div>
+      <div class="modal-footer justify-content-center border-0">
+        <button type="button" class="btn btn-danger btn-lg px-4" data-bs-dismiss="modal">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </body>

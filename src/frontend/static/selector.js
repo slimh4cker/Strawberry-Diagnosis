@@ -103,11 +103,13 @@ function actualizarSintamasSeleccionadosDiv() {
         window.sintomasSeleccionados.length
             ? `<ul class="list-unstyled">` + window.sintomasSeleccionados.map((s, idx) => `
                 <li class="mb-2 d-flex align-items-center">
-                    <button class="btn btn-sm btn-danger sintoma-remove" 
+                    <button class="btn btn-sm btn-danger sintoma-remove d-flex align-items-center justify-content-center flex-shrink-0"
+                            style="width: 32px; height: 32px;"
                             data-index="${idx}"
                             data-parte="${s.parte}"
-                            data-valor="${s.valor}">
-                        −
+                            data-valor="${s.valor}"
+                            title="Eliminar">
+                        <i class="bi bi-trash"></i>
                     </button>
                     <span class="ms-2">${s.parte}: ${s.nombre}</span>
                 </li>

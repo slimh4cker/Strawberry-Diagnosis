@@ -1,5 +1,6 @@
 import { processDiagnosticSource } from "./DiagnosticoCard.js";
 import { post_diagnostic } from "./getDiagnostic.js";
+
 // Si luego quieren usar la API real:
 // import { post_diagnostic } from "./getDiagnostic.js";
 
@@ -9,7 +10,7 @@ document.getElementById("btn-diagnosticar").addEventListener("click", async () =
 
     // Validar que haya al menos 2 sintomas
     if (window.sintomasSeleccionados.length < 2) {
-        alert("Ha seleccionado muy pocos sintomas. Por favor selecciona al menos 2 síntomas");
+        mostrarModal("Ha seleccionado muy pocos síntomas. Por favor selecciona al menos 2.");
         return;
     }
 
@@ -25,3 +26,12 @@ document.getElementById("btn-diagnosticar").addEventListener("click", async () =
 
     processDiagnosticSource(data);    // muestra la tarjeta
 });
+
+function mostrarModal(mensaje) {
+    const modalEl = document.getElementById('modalAlerta');
+    const modalBody = document.getElementById('modalAlertaMensaje');
+    modalBody.textContent = mensaje;
+
+    const modalBootstrap = new bootstrap.Modal(modalEl); // Inicializa el modal
+    modalBootstrap.show();
+}

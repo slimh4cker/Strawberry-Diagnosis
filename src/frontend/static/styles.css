@@ -12,25 +12,42 @@ body {
     font-weight: 600;
 }
 
-#sintomas-lista,
-#sintomas-seleccionados {
-    border: 2px solid #e3e3e3;
-    border-radius: 12px;
-    transition: 0.3s;
+#sintomas-seleccionados, #sintomas-lista {
+    padding: 0.75rem 1rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-#sintomas-lista:hover,
-#sintomas-seleccionados:hover {
-    border-color: #b8b8b8;
+#sintomas-seleccionados ul {
+    padding-left: 0;
+    margin-bottom: 0;
 }
 
-#resultado {
-    font-size: 1.1rem;
+#sintomas-seleccionados li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-#sintomas-seleccionados {
-    min-height: 40px;
+#sintomas-seleccionados li button.sintoma-remove {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
+
+#sintomas-seleccionados li span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1;
+}
+
 
 .svg-container {
     position: relative;
@@ -48,8 +65,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;      /* escala en proporción a la imagen */
-    height: 100%;     /* escala en proporción a la imagen */
+    width: 100%;
+    height: 100%;
     pointer-events: auto;
 }
 
@@ -65,13 +82,12 @@ body {
 
 .boton-general {
     position: absolute;
-    top: 20%;   /* porcentaje desde la parte superior del contenedor */
-    left: 80%;  /* porcentaje desde la izquierda */
-    transform: translate(-50%, -50%); /* centra el botón respecto a ese punto */
-
+    top: 20%;
+    left: 80%;
+    transform: translate(-50%, -50%);
     z-index: 30;
-    padding: 9px 28px;
-    font-size: 1.05rem;
+    padding: 6px 18px;
+    font-size: 0.9rem;
     font-weight: 600;
     background-color: #28a745;
     border: 1px solid #1f7a34;
@@ -82,7 +98,6 @@ body {
     transition: none;
 }
 
-
 .boton-general:hover {
     background-color: #218838;
 }
@@ -91,4 +106,93 @@ body {
     background-color: #1e7e34;
 }
 
+.col-sintomas {
+    height: 635px;
+    display: flex;
+    flex-direction: column;
+}
 
+.card-sintomas-lista {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.card-sintomas-seleccionados {
+    height: 220px;
+    overflow-y: auto;
+}
+
+.modern-modal {
+    border-radius: 16px;
+    overflow: hidden;
+    animation: popIn 0.25s ease-out;
+}
+
+.modern-modal .modal-body {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    border-radius: 16px 16px 0 0;
+}
+
+.icono-alerta {
+    font-size: 3rem;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-footer {
+    background: #cc0000;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+}
+
+@media (max-width: 992px) {
+    .col-sintomas {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .card-sintomas-lista,
+    .card-sintomas-seleccionados {
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #img-base {
+        width: 100%;
+        height: auto;
+    }
+
+    .boton-general {
+        top: 15%;
+        left: 70%;
+        padding: 5px 16px;
+        font-size: 0.85rem;
+    }
+
+    .card-sintomas-lista,
+    .card-sintomas-seleccionados {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 576px) {
+    #btn-diagnosticar {
+        font-size: 1rem;
+        padding: 8px 20px;
+    }
+
+    .card {
+        margin: 0 5px;
+    }
+
+    #resultado {
+        font-size: 1rem;
+    }
+}
