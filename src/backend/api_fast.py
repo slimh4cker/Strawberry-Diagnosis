@@ -67,5 +67,5 @@ def diagnostico(payload: Payload):
 
         return response
 
-    return {"error": "No se puede diagnosticar con los datos actuales."}
+    return {"error": "No se puede diagnosticar con los datos actuales. Posiblemente los sintomas indicados no sean sufucientes"}
 
