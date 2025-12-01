@@ -1,53 +1,108 @@
 body {
     background: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #34495e;
+    margin: 0;
 }
 
-.card {
-    border-radius: 12px;
+.card, #diagnostic-result, .modern-modal {
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease-in-out;
 }
 
 #btn-diagnosticar {
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #28a745;
+    transition: all 0.2s ease;
 }
+
+#btn-diagnosticar:hover {
+    background-color: #218838;
+}
+
+#btn-diagnosticar:active {
+    background-color: #1e7e34;
+}
+
+.boton-general {
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #28a745;
+    transition: all 0.2s ease;
+}
+
+.boton-general:hover {
+    background-color: #218838;
+}
+
+.boton-general:active {
+    background-color: #1e7e34;
+}
+
 
 #sintomas-seleccionados, #sintomas-lista {
     padding: 0.75rem 1rem;
+    max-width: 100%;
     overflow-wrap: break-word;
     word-break: break-word;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
 #sintomas-seleccionados ul {
     padding-left: 0;
     margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 #sintomas-seleccionados li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    background: #f1f3f5;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 #sintomas-seleccionados li button.sintoma-remove {
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
 }
 
-#sintomas-seleccionados li span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex-grow: 1;
+#sintomas-seleccionados li button.sintoma-remove:hover {
+    background: #c82333;
 }
-
 
 .svg-container {
     position: relative;
@@ -80,50 +135,26 @@ body {
     fill: rgba(107, 0, 247, 0.25);
 }
 
-.boton-general {
-    position: absolute;
-    top: 20%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    z-index: 30;
-    padding: 6px 18px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    background-color: #28a745;
-    border: 1px solid #1f7a34;
-    border-radius: 12px;
-    color: white;
-    cursor: pointer;
-    box-shadow: none;
-    transition: none;
-}
-
-.boton-general:hover {
-    background-color: #218838;
-}
-
-.boton-general:active {
-    background-color: #1e7e34;
-}
-
 .col-sintomas {
-    height: 635px;
     display: flex;
     flex-direction: column;
 }
 
-.card-sintomas-lista {
+.card-sintomas-lista, .card-sintomas-seleccionados {
     flex: 1;
     overflow-y: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
 }
 
 .card-sintomas-seleccionados {
     height: 220px;
-    overflow-y: auto;
 }
 
 .modern-modal {
-    border-radius: 16px;
     overflow: hidden;
     animation: popIn 0.25s ease-out;
 }
@@ -131,16 +162,6 @@ body {
 .modern-modal .modal-body {
     background: linear-gradient(135deg, #ff4d4d, #cc0000);
     color: white;
-    border-radius: 16px 16px 0 0;
-}
-
-.icono-alerta {
-    font-size: 3rem;
-}
-
-@keyframes popIn {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
 }
 
 .modal-footer {
@@ -149,62 +170,15 @@ body {
     border-radius: 0 0 16px 16px;
 }
 
-@media (max-width: 992px) {
-    .col-sintomas {
-        height: auto;
-        flex-direction: column;
-    }
-
-    .card-sintomas-lista,
-    .card-sintomas-seleccionados {
-        height: auto;
-    }
-}
-
-@media (max-width: 768px) {
-    #img-base {
-        width: 100%;
-        height: auto;
-    }
-
-    .boton-general {
-        top: 15%;
-        left: 70%;
-        padding: 5px 16px;
-        font-size: 0.85rem;
-    }
-
-    .card-sintomas-lista,
-    .card-sintomas-seleccionados {
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 576px) {
-    #btn-diagnosticar {
-        font-size: 1rem;
-        padding: 8px 20px;
-    }
-
-    .card {
-        margin: 0 5px;
-    }
-
-    #resultado {
-        font-size: 1rem;
-    }
+.icono-alerta {
+    font-size: 3rem;
 }
 
 #diagnostic-result {
-    background: #ffffff;
-    border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     margin-top: 20px;
-    transition: all 0.4s ease-in-out;
     opacity: 0;
+    transition: all 0.4s ease-in-out;
 }
 
 #diagnostic-result.show {
@@ -219,7 +193,6 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1.2rem;
-    color: #2c3e50;
 }
 
 .diagnostic-header .status-icon {
@@ -230,9 +203,8 @@ body {
 
 .diagnostic-description {
     font-size: 1rem;
-    color: #34495e;
-    margin-bottom: 1rem;
     line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .diagnostic-description ul {
@@ -252,7 +224,36 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 992px) {
+    .col-sintomas {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 768px) {
+    #img-base {
+        width: 100%;
+        height: auto;
+    }
+
+    .boton-general {
+        top: 15%;
+        left: 70%;
+        padding: 5px 16px;
+        font-size: 0.85rem;
+    }
+
+    .card-sintomas-lista, .card-sintomas-seleccionados {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
     #diagnostic-result {
         padding: 1.5rem;
     }
@@ -262,11 +263,14 @@ body {
         text-align: center;
     }
 
-    .diagnostic-header .status-icon {
-        margin-top: 0.5rem;
-    }
-
     .diagnostic-description ul {
         justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    #btn-diagnosticar {
+        font-size: 1rem;
+        padding: 8px 20px;
     }
 }
