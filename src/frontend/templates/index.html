@@ -18,13 +18,17 @@
         Sistema Experto para Diagnóstico de Fresas
     </h2>
 
+    <p class="text-center mb-4">
+        Seleccione alguna parte del arbusto de fresas mostrado a continuación
+    </p>
+
     <!-- GRID -->
     <div class="row g-4">
 
         <!-- IMAGEN + SVG -->
         <div class="col-md-6 text-center">
             <div class="card shadow-sm p-3">
-                <h5 class="fw-semibold mb-3">Partes de la planta</h5>
+                <h5 class="fw-semibold mb-3">Partes del Arbusto de Fresas</h5>
 
                 <div class="svg-container">
                     <img id="img-base" src="{{ url_for('static', filename='img/partes.png') }}" class="img-fluid rounded border">
@@ -74,7 +78,7 @@
 
     <!-- TARJETA DE SÍNTOMAS -->
     <div class="card shadow-sm p-3 mb-4 card-sintomas-lista">
-        <h5 class="fw-semibold mb-3">Síntomas (según la parte seleccionada)</h5>
+        <h5 class="fw-semibold mb-3">Sintomas disponibles</h5>
 
         <div id="lista-sintomas" class="text-muted">
             Selecciona una parte de la planta para ver los síntomas disponibles.
@@ -109,6 +113,8 @@
 <script src="{{ url_for('static', filename='selector.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='diagnostic-main.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='getDiagnostic.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
 <!-- Modal -->
 <div id="modalAlerta" class="modal fade" tabindex="-1" aria-hidden="true">

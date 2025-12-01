@@ -27,6 +27,7 @@ document.getElementById("btn-diagnosticar").addEventListener("click", async () =
     processDiagnosticSource(data);    // muestra la tarjeta
     const resultContainer = document.getElementById("diagnostic-result");
     resultContainer.classList.add("show");
+    resultContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 function mostrarModal(mensaje) {

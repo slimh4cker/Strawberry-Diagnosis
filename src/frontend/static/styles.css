@@ -57,6 +57,26 @@ body {
     background-color: #1e7e34;
 }
 
+.boton-pdf {
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #28a745; 
+    transition: all 0.2s ease;
+}
+
+.boton-pdf:hover {
+    background-color: #218838;
+}
+
+.boton-pdf:active {
+    background-color: #1e7e34;
+}
+
 
 #sintomas-seleccionados, #sintomas-lista {
     padding: 0.75rem 1rem;
