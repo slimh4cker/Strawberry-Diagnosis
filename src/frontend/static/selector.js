@@ -110,7 +110,7 @@ function actualizarSintamasSeleccionadosDiv() {
                             data-valor="${s.valor}">
                         −
                     </button>
-                    <span class="ms-2">${s.nombre}</span>
+                    <span class="ms-2">${s.parte}: ${s.nombre}</span>
                 </li>
               `).join("") + `</ul>`
             : "<span class='text-muted'>Ninguno aún</span>";
