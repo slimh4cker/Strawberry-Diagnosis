@@ -175,3 +175,26 @@ async function obtenerSintomasParaParte(clave) {
     return data[clave] || data;
   });
 }
+
+
+// Quitar selección de síntomas disponibles
+document.getElementById("btn-limpiar-disponibles").addEventListener("click", () => {
+    document.querySelectorAll(".sintoma-check.active").forEach(btn => {
+        btn.classList.remove("active");
+    });
+});
+
+// Limpiar completamente la selección de síntomas
+document.getElementById("btn-limpiar-sintomas").addEventListener("click", () => {
+
+    // Vaciar array global
+    window.sintomasSeleccionados = [];
+
+    // Actualizar la vista de síntomas seleccionados
+    actualizarSintamasSeleccionadosDiv();
+
+    // Desactivar botones activos de la lista
+    document.querySelectorAll(".sintoma-check.active").forEach(btn => {
+        btn.classList.remove("active");
+    });
+});

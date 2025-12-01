@@ -73,12 +73,19 @@
             </div>
         </div>
 
-      <!-- LISTA DE SÍNTOMAS -->
 <div class="col-md-6 col-sintomas">
 
     <!-- TARJETA DE SÍNTOMAS -->
     <div class="card shadow-sm p-3 mb-4 card-sintomas-lista">
-        <h5 class="fw-semibold mb-3">Sintomas disponibles</h5>
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="fw-semibold">Síntomas disponibles</h5>
+
+            <!-- BOTÓN QUITAR SELECCIÓN -->
+            <button id="btn-limpiar-disponibles" class="btn btn-secondary btn-sm">
+                Quitar selección
+            </button>
+        </div>
 
         <div id="lista-sintomas" class="text-muted">
             Selecciona una parte de la planta para ver los síntomas disponibles.
@@ -87,10 +94,20 @@
 
     <!-- TARJETA DE SÍNTOMAS SELECCIONADOS -->
     <div class="card shadow-sm p-3 card-sintomas-seleccionados">
-        <h5 class="fw-semibold">Síntomas seleccionados</h5>
+
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="fw-semibold">Síntomas seleccionados</h5>
+
+            <!-- BOTÓN LIMPIAR TODO -->
+            <button id="btn-limpiar-sintomas" class="btn btn-warning btn-sm">
+                Limpiar todo
+            </button>
+        </div>
+
         <div id="sintomas-seleccionados" class="mt-2 text-secondary">
             <span class="text-muted">Ninguno aún</span>
         </div>
+
     </div>
 
 </div>

@@ -172,6 +172,8 @@ body {
 
 .card-sintomas-seleccionados {
     height: 220px;
+    flex: none;
+    overflow-y: auto;
 }
 
 .modern-modal {
@@ -330,4 +332,27 @@ body {
     color: white;
     border-color: #1d3f75;
     box-shadow: 0 4px 14px rgba(42, 93, 176, 0.7);
+}
+
+#btn-limpiar-disponibles,
+#btn-limpiar-sintomas {
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: #dc3545;
+    transition: all 0.2s ease;
+}
+
+#btn-limpiar-disponibles:hover,
+#btn-limpiar-sintomas:hover {
+    background-color: #bb2d3b;
+}
+
+#btn-limpiar-disponibles:active,
+#btn-limpiar-sintomas:active {
+    background-color: #a52834;
 }
