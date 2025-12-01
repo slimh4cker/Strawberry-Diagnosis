@@ -62,12 +62,10 @@ function mostrarSintomasDe(parte, sintomas) {
 function actualizarEventosCheckbox() {
     document.querySelectorAll(".sintoma-check").forEach(btn => {
         btn.addEventListener("click", () => {
-            btn.classList.toggle("active");
-            
-            const seleccionados = [...document.querySelectorAll(".sintoma-check.active")]
-                .map(b => b.textContent.replace("+ ", ""));
-
-            agregarSintoma(btn.value, btn.name)
+            if (!btn.classList.contains("active")) {
+                btn.classList.toggle("active");
+                agregarSintoma(btn.value, btn.name);
+            }
         });
     });
 }
