@@ -46,7 +46,7 @@ function mostrarSintomasDe(parte, sintomas, hecho) {
         );
 
         listaSintomasDiv.innerHTML += `
-            <button class="btn btn-outline-primary sintoma-check my-1 ${estaSeleccionado ? 'active' : ''}"
+            <button class="sintoma-check ${estaSeleccionado ? 'active' : ''}"
             type="button"
             hecho="${hecho}"
             value="${parte}:${valor}"
