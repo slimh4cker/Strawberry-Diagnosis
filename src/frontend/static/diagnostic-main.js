@@ -7,6 +7,12 @@ import { post_diagnostic } from "./getDiagnostic.js";
 document.getElementById("btn-diagnosticar").addEventListener("click", async () => {
     // Los sintomas seleccionados están en la variable global window.sintomasSeleccionados
 
+    // Validar que haya al menos 2 sintomas
+    if (window.sintomasSeleccionados.length < 2) {
+        alert("Ha seleccionado muy pocos sintomas. Por favor selecciona al menos 2 síntomas");
+        return;
+    }
+
     // se eliminan los datos no necesarios para el backend
     // Los sintomas se almacenan como {"hecho": "sintoma_hoja", "valor": "danada", "nombre": "dañada", parte: "hoja"}
     // solo nos quedamos con hehco y valor
