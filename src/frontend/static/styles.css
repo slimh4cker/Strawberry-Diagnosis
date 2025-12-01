@@ -65,24 +65,23 @@ body {
 
 .boton-general {
     position: absolute;
-    top: 120px;
-    left: 630px;
+    top: 20%;   /* porcentaje desde la parte superior del contenedor */
+    left: 80%;  /* porcentaje desde la izquierda */
+    transform: translate(-50%, -50%); /* centra el botón respecto a ese punto */
+
     z-index: 30;
-
-    padding: 9px 28px;      /* más alto y más largo */
-    font-size: 1.05rem;      
+    padding: 9px 28px;
+    font-size: 1.05rem;
     font-weight: 600;
-
     background-color: #28a745;
     border: 1px solid #1f7a34;
-    border-radius: 12px;     /* bordes suaves */
+    border-radius: 12px;
     color: white;
-
     cursor: pointer;
-
     box-shadow: none;
     transition: none;
 }
+
 
 .boton-general:hover {
     background-color: #218838;
