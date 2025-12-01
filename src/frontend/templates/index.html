@@ -18,10 +18,6 @@
         Sistema Experto para Diagnóstico de Fresas
     </h2>
 
-    <p class="text-center mb-4">
-        Seleccione alguna parte del arbusto de fresas mostrado a continuación
-    </p>
-
     <!-- GRID -->
     <div class="row g-4">
 
@@ -147,6 +143,58 @@
     </div>
   </div>
 </div>
+
+<!-- Modal de Bienvenida -->
+<div id="modalBienvenida" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content border-0 shadow-lg" style="color: white;">
+
+      <div class="modal-header border-0"
+           style="background: #2e7d32; color: white;">
+        <h5 class="modal-title fw-bold">
+          ¡Bienvenido al Sistema Experto de Fresas! 🍓
+        </h5>
+      </div>
+
+      <div class="modal-body text-center p-4"
+           style="background: linear-gradient(180deg, #d32f2f, #c62828); color: white;">
+
+        <p class="fs-5">
+          Este sistema te ayudará a diagnosticar  
+          enfermedades y plagas en arbustos de fresa.
+        </p>
+
+        <ul class="text-start">
+          <li>1. Selecciona una parte del arbusto en la imagen.</li>
+          <li>2. Elige los síntomas que observes.</li>
+          <li>3. Presiona <b>"Diagnosticar"</b> para obtener los resultados.</li>
+        </ul>
+
+        <p class="fw-semibold mt-3">¡Comencemos!</p>
+      </div>
+
+      <div class="modal-footer justify-content-center border-0"
+           style="background: #c62828;">
+        <button type="button" class="btn btn-success px-4 fw-semibold" data-bs-dismiss="modal">
+          Entendido
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        const modalBienvenida = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+        modalBienvenida.show();
+    }, 1200);
+});
+</script>
+
 
 
 </body>
