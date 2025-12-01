@@ -60,9 +60,9 @@ export function renderMessage(message) {
 
 export function processDiagnosticSource(data) {
 
-    // Caso 1: API regresa string (“Selecciona más síntomas”)
-    if (typeof data === "string") {
-        return renderMessage(data);
+    // Caso 1: API regresa error 
+    if (data.error) {
+        return renderMessage(data.error);
     }
 
     // Caso 2: API dummy regresa lista de diagnósticos
