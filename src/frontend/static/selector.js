@@ -98,7 +98,6 @@ function agregarSintoma(sintoma, nombre) {
 
 // Actualizar el div de síntomas seleccionados segun lo que se encuentre dentro de window.sintomasSeleccionados
 function actualizarSintamasSeleccionadosDiv() {
-    // TODO agregar parte corespondiente de la planta
     console.log("Síntomas seleccionados:", window.sintomasSeleccionados);
     sintomasSeleccionadosDiv.innerHTML =
         window.sintomasSeleccionados.length
