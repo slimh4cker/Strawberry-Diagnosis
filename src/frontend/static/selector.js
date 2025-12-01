@@ -26,14 +26,14 @@ document.querySelectorAll(".parte").forEach(elem => {
         const clave = elem.dataset.clave;
 
         obtenerSintomasParaParte(clave).then(sintomas => {
-            mostrarSintomasDe(parte, sintomas);
+            mostrarSintomasDe(parte, sintomas, clave);
         });
     });
 });
 
 
 // Mostrar lista de síntomas según la parte
-function mostrarSintomasDe(parte, sintomas) {
+function mostrarSintomasDe(parte, sintomas, hecho) {
     listaSintomasDiv.innerHTML = "";
 
     sintomas.forEach(s => {
@@ -48,6 +48,7 @@ function mostrarSintomasDe(parte, sintomas) {
         listaSintomasDiv.innerHTML += `
             <button class="btn btn-outline-primary sintoma-check my-1 ${estaSeleccionado ? 'active' : ''}"
             type="button"
+            hecho="${hecho}"
             value="${parte}:${valor}"
             name="${s[1]}"
             id="${id}">
@@ -64,7 +65,8 @@ function actualizarEventosCheckbox() {
         btn.addEventListener("click", () => {
             if (!btn.classList.contains("active")) {
                 btn.classList.toggle("active");
-                agregarSintoma(btn.value, btn.name);
+                const hecho = btn.getAttribute("hecho");
+                agregarSintoma(btn.value, btn.name, hecho);
             }
         });
     });
@@ -75,12 +77,12 @@ function actualizarEventosCheckbox() {
 // nombre es el texto que se muestra en el boton, su forma normal de escribirlo
 // ejemplo: valor = "hoja:danada", nombre = "Hoja dañada"
 // lo agrega a la variable global window.sintomasSeleccionados y actauliza actualizarSintomasSeleccionadosDiv
-function agregarSintoma(sintoma, nombre) {
+function agregarSintoma(sintoma, nombre, hecho) {
     const parte = sintoma.split(":")[0];
     const desc = sintoma.split(":")[1];
     
     // agregar a variable global
-    const sintomaObj = { "hecho": parte, "valor": desc, "nombre": nombre, "parte": parte };
+    const sintomaObj = { "hecho": hecho, "valor": desc, "nombre": nombre, "parte": parte };
 
     // Verificar si ya existe
     const index = window.sintomasSeleccionados.findIndex(s => s.hecho === parte && s.valor === desc);
