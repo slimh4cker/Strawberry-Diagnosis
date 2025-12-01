@@ -99,7 +99,6 @@ function agregarSintoma(sintoma, nombre) {
 // Actualizar el div de síntomas seleccionados segun lo que se encuentre dentro de window.sintomasSeleccionados
 function actualizarSintamasSeleccionadosDiv() {
     // TODO agregar parte corespondiente de la planta
-    // TODO actualizar botones activados en la lista de sintomas
     console.log("Síntomas seleccionados:", window.sintomasSeleccionados);
     sintomasSeleccionadosDiv.innerHTML =
         window.sintomasSeleccionados.length
@@ -120,7 +119,22 @@ function actualizarSintamasSeleccionadosDiv() {
     document.querySelectorAll(".sintoma-remove").forEach(btn => {
         btn.addEventListener("click", () => {
             const index = btn.dataset.index;
+            const parte = btn.dataset.parte;
+            const valor = btn.dataset.valor;
+            
             window.sintomasSeleccionados.splice(index, 1);
+            
+            // Remover la clase "active" del botón correspondiente
+            const sintomaBtnId = parte + "_" + valor;
+            const sintomaBtnId2 = parte + "_" + parte + ":" + valor;
+            const sintomaBtn = document.getElementById(sintomaBtnId) || 
+                               document.getElementById(sintomaBtnId2) ||
+                               document.querySelector(`.sintoma-check[value="${parte}:${valor}"]`);
+            
+            if (sintomaBtn) {
+                sintomaBtn.classList.remove("active");
+            }
+            
             actualizarSintamasSeleccionadosDiv();
         });
     });
