@@ -38,17 +38,21 @@ function mostrarSintomasDe(parte, sintomas) {
 
     sintomas.forEach(s => {
         const id = parte + "_" + s;
+        const valor = s[0];
+        
+        // Verificar si el síntoma ya está seleccionado
+        const estaSeleccionado = window.sintomasSeleccionados.some(
+            sel => sel.parte === parte && sel.valor === valor
+        );
 
         listaSintomasDiv.innerHTML += `
-            <button class="btn btn-outline-primary sintoma-check my-1"
+            <button class="btn btn-outline-primary sintoma-check my-1 ${estaSeleccionado ? 'active' : ''}"
             type="button"
-            value="${parte}:${s[0]}"
+            value="${parte}:${valor}"
             name="${s[1]}"
             id="${id}">
             + ${s[1]}
             </button>`;
-
-            // TODO : si el boton ya esta en la lista de sintomas seleccionados, agregarle la clase active
     });
 
     actualizarEventosCheckbox();
