@@ -111,31 +111,38 @@ function actualizarSintamasSeleccionadosDiv() {
                 </li>
               `).join("") + `</ul>`
             : "<span class='text-muted'>Ninguno aún</span>";
-    
-    // Agregar eventos a los botones de eliminar
+    removerSintomaEvento();
+}
+
+// Evento para remover síntoma seleccionado de la lista con el boton en sintomas seleccionados
+function removerSintomaEvento() {
     document.querySelectorAll(".sintoma-remove").forEach(btn => {
         btn.addEventListener("click", () => {
             const index = btn.dataset.index;
             const parte = btn.dataset.parte;
             const valor = btn.dataset.valor;
             
-            window.sintomasSeleccionados.splice(index, 1);
             
             // Remover la clase "active" del botón correspondiente
             const sintomaBtnId = parte + "_" + valor;
             const sintomaBtnId2 = parte + "_" + parte + ":" + valor;
             const sintomaBtn = document.getElementById(sintomaBtnId) || 
-                               document.getElementById(sintomaBtnId2) ||
-                               document.querySelector(`.sintoma-check[value="${parte}:${valor}"]`);
+                            document.getElementById(sintomaBtnId2) ||
+                            document.querySelector(`.sintoma-check[value="${parte}:${valor}"]`);
             
             if (sintomaBtn) {
                 sintomaBtn.classList.remove("active");
             }
+
+            // Remover de la variable global
+            console.log("Removiendo síntoma:", parte, valor);
+            window.sintomasSeleccionados = window.sintomasSeleccionados.filter((sintoma) => !(sintoma.parte == parte && sintoma.valor == valor));
             
             actualizarSintamasSeleccionadosDiv();
         });
     });
 }
+
 
 document.querySelectorAll(".parte").forEach(elemento => {
     elemento.addEventListener("click", () => {
