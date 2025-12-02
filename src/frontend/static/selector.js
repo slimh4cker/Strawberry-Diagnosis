@@ -2,6 +2,22 @@ const sintomasSeleccionadosDiv = document.getElementById("sintomas-seleccionados
 const listaSintomasDiv = document.getElementById("lista-sintomas");
 // Array global para almacenar síntomas seleccionados
 // Los sintomas se almacenan como {"hecho": "sintoma_hoja", "valor": "danada", "nombre": "dañada", parte: "hoja"}
+const iconosPorParte = {
+    "Flor": "🌸",
+    "Botón": "🟣",          
+    "Pedúnculo": "🟠",      
+    "Pecíolo": "🌿",
+    "Hoja": "🍃",
+    "Fruto": "🍓",
+    "Tallo": "🌱",
+    "Estolón": "🪴",
+    "Corona": "👑",         
+    "Raíz": "🪱",
+    "Insecto": "🪲",
+    "General": "ℹ️"  
+};
+
+
 window.sintomasSeleccionados = [];
 
 window.addEventListener("load", () => {
@@ -151,20 +167,12 @@ function removerSintomaEvento() {
 document.querySelectorAll(".parte").forEach(elemento => {
     elemento.addEventListener("click", () => {
         const parte = elemento.getAttribute("data-parte");
+        const icono = iconosPorParte[parte] || "🔍";
 
-        // Mostrar el nombre seleccionado (solo para pruebas)
-        let box = document.getElementById("parte-seleccionada-temp");
-
-        if (!box) {
-            box = document.createElement("div");
-            box.id = "parte-seleccionada-temp";
-            box.className = "alert alert-info mt-3 text-center fw-bold";
-            document.querySelector(".svg-container").appendChild(box);
-        }
-
-        box.textContent = "Parte seleccionada: " + parte;
+        mostrarToast("Parte seleccionada: " + parte, icono);
     });
 });
+
 
 // Función para obtener síntomas según la parte seleccionada
 // clave es el identificador de la parte segun el json
@@ -198,3 +206,33 @@ document.getElementById("btn-limpiar-sintomas").addEventListener("click", () => 
         btn.classList.remove("active");
     });
 });
+
+
+
+function mostrarToast(mensaje, icono = "ℹ️") {
+
+    const cont = document.getElementById("toast-container");
+
+    const toast = document.createElement("div");
+    toast.className = "toast-modern";
+
+    toast.innerHTML = `
+        <span class="icon">${icono}</span>
+        <span>${mensaje}</span>
+    `;
+
+    cont.appendChild(toast);
+
+    // Auto-cerrar después de 3.5s
+    setTimeout(() => cerrarToast(toast), 3500);
+
+    // Cerrar manual con clic
+    toast.addEventListener("click", () => cerrarToast(toast));
+}
+
+function cerrarToast(toast) {
+    toast.style.animation = "toast-out 0.32s ease forwards";
+    setTimeout(() => toast.remove(), 300);
+}
+
+

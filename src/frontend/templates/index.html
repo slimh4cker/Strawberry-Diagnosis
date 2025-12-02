@@ -29,7 +29,7 @@
                 <div class="svg-container">
                     <img id="img-base" src="{{ url_for('static', filename='img/partes.png') }}" class="img-fluid rounded border">
                     <button id="btn-general" class="boton-general parte" data-parte="General" data-clave="sintoma_planta" >
-                        General
+                        Sintomas generales
                     </button>
                     <svg id="svg-overlay" class="svg-overlay" viewBox="0 0 900 582">
 
@@ -60,7 +60,7 @@
 
                         <rect class="parte" data-parte="Raíz" data-clave="sintoma_raiz" x="265" y="365" width="160" height="150"/>
 
-                        <rect class="parte" data-parte="Insecto" data-clave="presencia_insecto" x="670" y="290" width="100" height="155"/>
+                        <rect class="parte" data-parte="Insecto" data-clave="presencia_insecto" x="669" y="290" width="100" height="155"/>
 
                     </svg>
 
@@ -195,6 +195,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<!-- Contenedor de notificaciones -->
+<div id="toast-container" class="toast-container"></div>
 
 
 </body>
