@@ -41,8 +41,8 @@ body {
 
 .boton-general {
     position: absolute;
-    top: 30%;
-    left: 80%; 
+    top: 20%;
+    left: 85%; 
     transform: translate(-50%, -50%);
     z-index: 30;
     border-radius: 12px;
@@ -272,8 +272,8 @@ body {
     }
 
     .boton-general {
-        top: 15%;
-        left: 70%;
+        top: 20%;
+        left: 85%;
         padding: 5px 16px;
         font-size: 0.85rem;
     }
