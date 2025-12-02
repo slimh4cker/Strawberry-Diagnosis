@@ -101,7 +101,10 @@ function agregarSintoma(sintoma, nombre, hecho) {
     const sintomaObj = { "hecho": hecho, "valor": desc, "nombre": nombre, "parte": parte };
 
     // Verificar si ya existe
-    const index = window.sintomasSeleccionados.findIndex(s => s.hecho === parte && s.valor === desc);
+    const index = window.sintomasSeleccionados.findIndex(
+    s => s.parte === parte && s.valor === desc
+    );
+
 
     if (index === -1) {
         // No existe, agregar
