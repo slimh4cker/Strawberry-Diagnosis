@@ -1,3 +1,6 @@
+#COMANDO PARA LEVANTAR FAST API. NECESARIO EJECUTAR PARA QUE FUNCIONE EL PRPYECTO
+# uvicorn api_fast:app --reload
+
 # Este archivo es el que levanta FastApi (logica del BackEnd)
 
 from fastapi import FastAPI
