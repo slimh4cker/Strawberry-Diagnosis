@@ -13,10 +13,14 @@ body {
 }
 
 #btn-diagnosticar {
-    border-radius: 12px;
+   /*  border-radius: 12px;
     position: absolute;
     top: 76%;
-    left: 88%;
+    left: 88%; */
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-top: 20px; /* separacion de la card */
     font-size: 1.1rem;
     font-weight: 600;
     padding: 8px 20px;
@@ -38,7 +42,7 @@ body {
 .boton-general {
     position: absolute;
     top: 30%;
-    left: 80%;
+    left: 80%; 
     transform: translate(-50%, -50%);
     z-index: 30;
     border-radius: 12px;
@@ -49,7 +53,7 @@ body {
     border: none;
     color: white;
     background-color: #28a745;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease; 
 }
 
 .boton-general:hover {
