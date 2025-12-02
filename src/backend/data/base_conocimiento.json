@@ -445,7 +445,7 @@
       "id": "R37",
       "nombre": "Ramularia tulasnei (Mancha foliar blanca)",
       "condiciones": [
-        {"hecho": "sintoma_hoja", "valor": "manchas_purpura"},
+        {"hecho": "sintoma_hoja", "valor": "manchas_purpuras"},
         {"hecho": "sintoma_hoja", "valor": "centro_blanco"}
       ],
       "conclusion": {

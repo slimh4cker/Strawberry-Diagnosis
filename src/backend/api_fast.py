@@ -44,6 +44,7 @@ class Payload(BaseModel):
 def diagnostico(payload: Payload):
 
     lista_sintomas = [s.model_dump() for s in payload.data]
+    print(lista_sintomas)
     counter = Counter((s['hecho'], s['valor']) for s in lista_sintomas) # se cuenta cada clave, valor
     if any(count > 1 for count in counter.values()): # si alguna clave, valor se repite
         return {"resultado": "Hay síntomas repetidos en la selección."}
