@@ -189,11 +189,11 @@ async function obtenerSintomasParaParte(clave) {
 
 
 // Quitar selección de síntomas disponibles
-document.getElementById("btn-limpiar-disponibles").addEventListener("click", () => {
+/* document.getElementById("btn-limpiar-disponibles").addEventListener("click", () => {
     document.querySelectorAll(".sintoma-check.active").forEach(btn => {
         btn.classList.remove("active");
     });
-});
+}); */
 
 // Limpiar completamente la selección de síntomas
 document.getElementById("btn-limpiar-sintomas").addEventListener("click", () => {
