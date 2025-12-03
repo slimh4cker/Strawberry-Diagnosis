@@ -56,9 +56,7 @@ def diagnostico(payload: Payload):
     resultados = motor.iniciar_busqueda(lista_sintomas, base)
 
     if resultados:
-        # Para devolver todos los resultados como lista
-        # limpiamos o formateamos cada resultado si quieres,
-        # o solo devuelve tal cual vienen del motor
+
         response = []
         for r in resultados:
             item = {
